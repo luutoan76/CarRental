@@ -6,16 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Models;
+using System.Web;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace CarRental.Controllers
 {
     public class XesController : Controller
     {
+        private readonly ILogger<XesController> _logger;
+        private readonly IWebHostEnvironment webHostEnvironment;
         private readonly CarRentContext _context;
 
-        public XesController(CarRentContext context)
+        public XesController(CarRentContext context, IWebHostEnvironment hostEnvironment , ILogger<XesController> logger)
         {
+            _logger = logger;
             _context = context;
+            webHostEnvironment = hostEnvironment;
         }
 
         // GET: Xes
@@ -56,10 +64,20 @@ namespace CarRental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BienSo,Ten,TenLoai,MoTa,Gia,TrangThai")] Xe xe)
+        public async Task<IActionResult> Create([Bind("Id,BienSo,Ten,TenLoai,MoTa,Gia,TrangThai,ImageFile")] Xe xe)
         {
             if (ModelState.IsValid)
             {
+
+                string wwwRootPath = webHostEnvironment.WebRootPath;
+                string filename = Path.GetFileNameWithoutExtension(xe.ImageFile.FileName);
+                string extension = Path.GetExtension(xe.ImageFile.FileName);
+                xe.Hinh = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Image", filename);
+                using (var fileStream = new FileStream(path , FileMode.Create))
+                {
+                    await xe.ImageFile.CopyToAsync(fileStream);
+                }
                 _context.Add(xe);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -68,6 +86,21 @@ namespace CarRental.Controllers
             return View(xe);
         }
 
+        /*private string UploadFile(Xe xe)
+        {
+            string uniqueFileName = null;
+            if (xe.Hinh != null)
+            {
+                string uploaddir = Path.Combine(webHostEnvironment.WebRootPath, "Images");
+                uniqueFileName = Guid.NewGuid().ToString() + "-" + xe.Hinh.FileName;
+                string filePath = Path.Combine(uploaddir, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    xe.Hinh.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }*/
         // GET: Xes/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
@@ -90,7 +123,7 @@ namespace CarRental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,BienSo,Ten,TenLoai,MoTa,Gia,TrangThai")] Xe xe)
+        public async Task<IActionResult> Edit(string id, [Bind("Ten,TenLoai,MoTa,Gia,TrangThai,Hinh")] Xe xe)
         {
             if (id != xe.BienSo)
             {
@@ -101,6 +134,16 @@ namespace CarRental.Controllers
             {
                 try
                 {
+                    
+                    string wwwRootPath = webHostEnvironment.WebRootPath;
+                    string filename = Path.GetFileNameWithoutExtension(xe.ImageFile.FileName);
+                    string extension = Path.GetExtension(xe.ImageFile.FileName);
+                    xe.Hinh = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/Image", filename);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await xe.ImageFile.CopyToAsync(fileStream);
+                    }
                     _context.Update(xe);
                     await _context.SaveChangesAsync();
                 }

@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BienSo" class="control-label"></label>
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="TenLoai" class="control-label"></label>
-                <select asp-for="TenLoai" class ="form-control" asp-items="ViewBag.TenLoai"></select>
+                <select asp-for="TenLoai" class="form-control" asp-items="ViewBag.TenLoai"></select>
             </div>
             <div class="form-group">
                 <label asp-for="MoTa" class="control-label"></label>
@@ -42,8 +42,29 @@
                 <span asp-validation-for="TrangThai" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label">Hinh</label>
+                <input asp-for="ImageFile" class="form-control" accept="image/*" />
+                <br><img style="width: 250px;" src="#">
+
+                <script>
+                    window.addEventListener('load', function () {
+                        document.querySelector('input[type="file"]').addEventListener('change', function () {
+                            if (this.files && this.files[0]) {
+                                var img = document.querySelector('img');
+                                img.onload = () => {
+                                    URL.revokeObjectURL(img.src);  // no longer needed, free memory
+                                }
+
+                                img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>
@@ -52,6 +73,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+    
+

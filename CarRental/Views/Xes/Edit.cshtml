@@ -12,12 +12,13 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="BienSo" readonly />
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="BienSo" />
+                <label asp-for="BienSo" class="control-label"></label>
+                <input asp-for="BienSo" class="form-control"  readonly/>
+                <span asp-validation-for="BienSo" class="text-danger"></span>
+            </div>            
             <div class="form-group">
                 <label asp-for="Ten" class="control-label"></label>
                 <input asp-for="Ten" class="form-control" />
@@ -37,6 +38,26 @@
                 <label asp-for="Gia" class="control-label"></label>
                 <input asp-for="Gia" class="form-control" />
                 <span asp-validation-for="Gia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Hinh</label>
+                <input asp-for="ImageFile" class="form-control" accept="image/*" />
+                <br><img style="width: 250px;" src="@("~/image/"+Model.Hinh)" asp-append-version="true">
+
+                <script>
+                    window.addEventListener('load', function () {
+                        document.querySelector('input[type="file"]').addEventListener('change', function () {
+                            if (this.files && this.files[0]) {
+                                var img = document.querySelector('img');
+                                img.onload = () => {
+                                    URL.revokeObjectURL(img.src);  // no longer needed, free memory
+                                }
+
+                                img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+                            }
+                        });
+                    });
+                </script>
             </div>
             <div class="form-group">
                 <label asp-for="TrangThai" class="control-label"></label>
