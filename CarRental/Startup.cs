@@ -25,7 +25,8 @@ namespace CarRental
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddSession();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<CarRentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("constring")));
         }
 
@@ -53,7 +54,7 @@ namespace CarRental
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Customers}/{action=Index}/{id?}");
+                    pattern: "{controller=Xes}/{action=IndexXe}/{id?}");
             });
         }
     }

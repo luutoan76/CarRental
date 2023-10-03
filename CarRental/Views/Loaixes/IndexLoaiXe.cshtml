@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CarRental.Models.Loaixe>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_KhachLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1>Danh sách loại xe</h1>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Loại xe: @item.TenLoai</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a href="@Url.Action("Details", new { id = item.TenLoai })" class="btn btn-primary btn-block">Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

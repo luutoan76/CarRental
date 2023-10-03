@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thuê Xe Ôtô - CarRental</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="stylets.css" />
+    <link rel="stylesheet" href="~/stylets.css" />
 </head>
 <body>
     <header>
@@ -19,45 +19,41 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Loaixes" asp-action="Index">Loại xe</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Loaixes" asp-action="IndexLoaiXe">Loại xe</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Xes" asp-action="Index">Xe</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Xes" asp-action="IndexXe">Xe</a>
                         </li>
-                         @*này ông thêm vô nha đăng xuât đăng nhập*@ 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="LoginCus" asp-action="Index">Đăng nhập</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container mt-5">
-
         <section class="jumbotron text-center">
             <div class="container">
                 <h1 class="jumbotron-heading">Thuê Xe Ôtô</h1>
                 <p class="lead text-muted">Chào mừng bạn đến với dịch vụ thuê xe ôtô CarRental. Chúng tôi cung cấp các loại xe ôtô phong cách và đa dạng để đáp ứng nhu cầu của bạn.</p>
-                <p>
-                    <img src="~/Image/download.jpg" alt="Xe Ôtô" class="img-fluid">
-                </p>
+                <div class="img-container">
+                    <img src="~/Image/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="Xe Ôtô 1" class="img-fluid" style="max-width: 100%; max-height: 100%;">
+                </div>
             </div>
         </section>
-
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - CarRental - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>

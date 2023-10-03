@@ -9,89 +9,85 @@ using CarRental.Models;
 
 namespace CarRental.Controllers
 {
-    public class LoaixesController : Controller
+    public class NhanViensController : Controller
     {
         private readonly CarRentContext _context;
 
-        public LoaixesController(CarRentContext context)
+        public NhanViensController(CarRentContext context)
         {
             _context = context;
         }
 
-        // GET: Loaixes
+        // GET: NhanViens
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Loaixes.ToListAsync());
-        }
-        public async Task<IActionResult> IndexLoaiXe()
-        {
-            return View(await _context.Loaixes.ToListAsync());
+            return View(await _context.NhanViens.ToListAsync());
         }
 
-        // GET: Loaixes/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: NhanViens/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var loaixe = await _context.Loaixes
-                .FirstOrDefaultAsync(m => m.TenLoai == id);
-            if (loaixe == null)
+            var nhanVien = await _context.NhanViens
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
 
-            return View(loaixe);
+            return View(nhanVien);
         }
 
-        // GET: Loaixes/Create
+        // GET: NhanViens/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Loaixes/Create
+        // POST: NhanViens/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TenLoai")] Loaixe loaixe)
+        public async Task<IActionResult> Create([Bind("Id,Ten,Pass,ChucVu,Sdt,Email,CaLam")] NhanVien nhanVien)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(loaixe);
+                _context.Add(nhanVien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(loaixe);
+            return View(nhanVien);
         }
 
-        // GET: Loaixes/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: NhanViens/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var loaixe = await _context.Loaixes.FindAsync(id);
-            if (loaixe == null)
+            var nhanVien = await _context.NhanViens.FindAsync(id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
-            return View(loaixe);
+            return View(nhanVien);
         }
 
-        // POST: Loaixes/Edit/5
+        // POST: NhanViens/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,TenLoai")] Loaixe loaixe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Ten,Pass,ChucVu,Sdt,Email,CaLam")] NhanVien nhanVien)
         {
-            if (id != loaixe.TenLoai)
+            if (id != nhanVien.Id)
             {
                 return NotFound();
             }
@@ -100,12 +96,12 @@ namespace CarRental.Controllers
             {
                 try
                 {
-                    _context.Update(loaixe);
+                    _context.Update(nhanVien);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LoaixeExists(loaixe.TenLoai))
+                    if (!NhanVienExists(nhanVien.Id))
                     {
                         return NotFound();
                     }
@@ -116,41 +112,41 @@ namespace CarRental.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(loaixe);
+            return View(nhanVien);
         }
 
-        // GET: Loaixes/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: NhanViens/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var loaixe = await _context.Loaixes
-                .FirstOrDefaultAsync(m => m.TenLoai == id);
-            if (loaixe == null)
+            var nhanVien = await _context.NhanViens
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
 
-            return View(loaixe);
+            return View(nhanVien);
         }
 
-        // POST: Loaixes/Delete/5
+        // POST: NhanViens/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var loaixe = await _context.Loaixes.FindAsync(id);
-            _context.Loaixes.Remove(loaixe);
+            var nhanVien = await _context.NhanViens.FindAsync(id);
+            _context.NhanViens.Remove(nhanVien);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LoaixeExists(string id)
+        private bool NhanVienExists(int id)
         {
-            return _context.Loaixes.Any(e => e.TenLoai == id);
+            return _context.NhanViens.Any(e => e.Id == id);
         }
     }
 }

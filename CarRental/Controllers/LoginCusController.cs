@@ -22,10 +22,9 @@ namespace CarRental.Controllers
         public IActionResult Index(Customer cus)
         {
             var result = _context.Customers.Where(a => a.TenKhach.Equals(cus.TenKhach) && a.Pass.Equals(cus.Pass)).FirstOrDefault();
-
             if (result != null)
             {
-                return RedirectToAction("Index", "Customers");
+                return RedirectToAction("Index", "Main");
             }
             else
             {
@@ -66,6 +65,25 @@ namespace CarRental.Controllers
 
 
         }
+        [HttpGet]
+        public IActionResult LoginAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult LoginAdmin(NhanVien employee)
+        {
+            var result = _context.NhanViens.Where(a => a.Ten.Equals(employee.Ten) && a.Pass.Equals(employee.Pass)).FirstOrDefault();
 
+            if (result != null)
+            {
+                return RedirectToAction("Index", "Customers");
+            }
+            else
+            {
+                ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                return Index();
+            }
+        }
     }
 }

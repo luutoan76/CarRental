@@ -1,4 +1,4 @@
-﻿@model CarRental.Models.Customer
+﻿@model CarRental.Models.NhanVien
 @{
     Layout = null;
 }
@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <!-- Design by foolishdeveloper.com -->
-    <title>Login Customer</title>
+    <title>Login admin</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -153,25 +153,17 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="post" asp-action="Index" asp-controller="LoginCus">
-        <h3>Login Customer</h3>
+    <form method="post" asp-action="LoginAdmin" asp-controller="LoginCus">
+        <h3>Login Admin</h3>
         <strong style="text-align:center;">@ViewBag.Thongbao</strong>
 
         <label for="username">Username</label>
-        <input type="text" asp-for="TenKhach" placeholder="Email or Phone" id="username">
-
+        <input type="text" asp-for="Ten" placeholder="Email or Phone" id="username">
         <label for="password">Password</label>
         <input type="password" asp-for="Pass" placeholder="Password" id="password">
 
         <button type="submit">Log In</button>
 
-        <div>
-            <button type="button" onclick="window.location.href = '@Url.Action("Register", "LoginCus")'">Sign in</button>
-        </div>
-
-        <div style="position:absolute; right:35px; margin-top:10px;">
-            Đăng nhập cho <a asp-controller="LoginCus" asp-action="LoginAdmin">admin</a>
-        </div>
 
     </form>
 
