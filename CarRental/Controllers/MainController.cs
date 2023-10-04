@@ -1,6 +1,7 @@
 ﻿using CarRental.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,23 @@ namespace CarRental.Controllers
             var car = _context.Xes.ToList();
             return View(car);
         }
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var xe = await _context.Xes
+                .Include(x => x.TenLoaiNavigation)
+                .FirstOrDefaultAsync(m => m.BienSo == id);
+            if (xe == null)
+            {
+                return NotFound();
+            }
+
+            return View(xe);
+        }
         // cái code này là chức năng cho bên khách hàng nha ae
     }
 }

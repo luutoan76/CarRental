@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 #nullable disable
 
@@ -23,11 +23,11 @@ namespace CarRental.Models
         public string MoTa { get; set; }
         public int? Gia { get; set; }
         public string TrangThai { get; set; }
-        
         public string Hinh { get; set; }
         [NotMapped]
         [DisplayName("Upload file")]
         public IFormFile ImageFile { get; set; }
+
         public virtual Loaixe TenLoaiNavigation { get; set; }
         public virtual ICollection<DatXe> DatXes { get; set; }
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }

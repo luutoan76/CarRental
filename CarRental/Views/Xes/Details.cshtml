@@ -4,51 +4,166 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<!DOCTYPE html>
+<html lang="zxx">
 
-<div>
-    <h4>Xe</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ten)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ten)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenLoaiNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TenLoaiNavigation.TenLoai)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.BienSo">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Harmic - Single Product</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/favicon.ico" />
+
+    <!-- CSS
+    ============================================ -->
+    <!-- Vendor CSS (Contain Bootstrap, Icon Fonts) -->
+    <link rel="stylesheet" href="~/assets/css/vendor/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/assets/css/vendor/Pe-icon-7-stroke.css" />
+
+    <!-- Plugin CSS (Global Plugins Files) -->
+    <link rel="stylesheet" href="~/assets/css/plugins/animate.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/magnific-popup.min.css" />
+
+    <!-- Minify Version -->
+    <!-- <link rel="stylesheet" href="~/assets/css/vendor/vendor.min.css"> -->
+    <!-- <link rel="stylesheet" href="~/assets/css/plugins/plugins.min.css"> -->
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="~/assets/css/style.min.css"> -->
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+
+
+        <!-- Begin Main Content Area  -->
+        <main class="main-content">
+            <div class="single-product-area section-space-top-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="single-product-img h-100">
+                                <div class="swiper-container single-product-slider">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="@("~/Image/"+Model.Hinh)" asp-append-version="true" />
+                                        </div>
+                                    </div>
+                                    <!-- Add Pagination -->
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-thumb-with-content row">
+                                <div class="col-12 order-lg-1 order-2 pt-10 pt-lg-0">
+                                    <div class="single-product-content">
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.Ten)
+                                        </dd>
+                                        <div class="price-box pb-1">
+                                            <span>Giá: </span>
+                                            <span class="new-price text-danger">$@Html.DisplayFor(model => model.Gia)/Ngày</span>
+                                        </div>
+                                        <div class="rating-box-wrap pb-7">
+                                            <div class="rating-box">
+                                                <ul>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="short-desc mb-6">
+                                            @Html.DisplayFor(model => model.MoTa)
+                                        </p>
+                                        <div class="product-category text-matterhorn pb-2">
+                                            <span class="title">Biển số:</span>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">@Html.DisplayFor(model => model.BienSo)</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <ul class="quantity-with-btn pb-7">
+                                            <li class="add-to-cart">
+                                                <a href="#" class="btn btn-success btn-block">Thuê</a>
+                                            </li>
+                                            <li class="wishlist-btn-wrap">
+                                                <a class="btn rounded-0" href="wishlist.html">
+                                                    <i class="pe-7s-like"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="product-category text-matterhorn pb-2">
+                                            <span class="title">Trạng thái:</span>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">@Html.DisplayFor(model => model.TrangThai)</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="product-category product-tags text-matterhorn pb-4">
+                                            <span class="title">Loại xe:</span>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">@Html.DisplayFor(model => model.TenLoaiNavigation.TenLoai)</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Main Content Area End Here  -->
+
+
+    </div>
+
+    <!-- Global Vendor, plugins JS -->
+    <!-- JS Files
+    ============================================ -->
+    <!-- Global Vendor, plugins JS -->
+    <!-- Vendor JS -->
+    <script src="~/assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="~/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="~/assets/js/vendor/jquery.waypoints.js"></script>
+
+    <!--Plugins JS-->
+    <script src="~/assets/js/plugins/wow.min.js"></script>
+    <script src="~/assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="~/assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.nice-select.js"></script>
+    <script src="~/assets/js/plugins/parallax.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+
+    <!-- Minify Version -->
+    <!-- <script src="~/assets/js/vendor.min.js"></script> -->
+    <!-- <script src="~/assets/js/plugins.min.js"></script> -->
+    <!--Main JS (Common Activation Codes)-->
+    <script src="~/assets/js/main.js"></script>
+    <!-- <script src="~/assets/js/main.min.js"></script> -->
+
+</body>
+
+</html>
