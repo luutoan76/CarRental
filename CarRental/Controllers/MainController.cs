@@ -23,6 +23,8 @@ namespace CarRental.Controllers
         }
         public IActionResult Index()
         {
+            string tenkhach = Request.Cookies["tenkhach"];
+            ViewBag.tenkhach = tenkhach;
             var car = _context.Xes.ToList();
             return View(car);
         }

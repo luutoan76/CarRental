@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CarRental.Models;
+using Microsoft.Extensions.Logging;
+
 namespace CarRental.Controllers
 {
     public class LoginCus : Controller
@@ -24,6 +26,7 @@ namespace CarRental.Controllers
             var result = _context.Customers.Where(a => a.TenKhach.Equals(cus.TenKhach) && a.Pass.Equals(cus.Pass)).FirstOrDefault();
             if (result != null)
             {
+                Response.Cookies.Append("tenkhach", cus.TenKhach);
                 return RedirectToAction("Index", "Main");
             }
             else
