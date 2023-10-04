@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\media\" />
-    <Folder Include="wwwroot\Image\" />
   </ItemGroup>
 
 </Project>
