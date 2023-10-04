@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">CarRental</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Xes" asp-action="IndexXe">CarRental</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,14 +19,21 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Loaixes" asp-action="IndexLoaiXe">Loại xe</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Loaixes" asp-action="Index">Loại xe</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Xes" asp-action="IndexXe">Xe</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Xes" asp-action="Index">Xe</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="LoginCus" asp-action="Index">Đăng nhập</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="NhanViens" asp-action="Index">Nhân viên</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Khách hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="LoginCus" asp-action="LoginAdmin">Đăng xuất</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -36,7 +43,7 @@
         <section class="jumbotron text-center">
             <div class="container">
                 <h1 class="jumbotron-heading">Thuê Xe Ôtô</h1>
-                <p class="lead text-muted">Chào mừng bạn đến với dịch vụ thuê xe ôtô CarRental. Chúng tôi cung cấp các loại xe ôtô phong cách và đa dạng để đáp ứng nhu cầu của bạn.</p>
+                <p class="lead text-muted">Chào mừng bạn đến với quản lý xe ôtô CarRental. Chúng tôi cung cấp các loại xe ôtô phong cách và đa dạng để đáp ứng nhu cầu của bạn.</p>
                 <div class="img-container">
                     <img src="~/Image/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="Xe Ôtô 1" class="img-fluid" style="max-width: 100%; max-height: 100%;">
                 </div>

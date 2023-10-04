@@ -26,5 +26,7 @@ namespace CarRental.Controllers
             var car = _context.Xes.ToList();
             return View(car);
         }
+
+        // cái code này là chức năng cho bên khách hàng nha ae
     }
 }

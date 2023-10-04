@@ -2,10 +2,22 @@
 
 @{
     ViewData["Title"] = "RentalCar";
-    Layout = "~/Views/Shared/_KhachLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
 
 }
+
+<div class="container mt-5">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Thuê Xe Ôtô</h1>
+            <p class="lead text-muted">Chào mừng bạn đến với quản lý xe ôtô CarRental. Chúng tôi cung cấp các loại xe ôtô phong cách và đa dạng để đáp ứng nhu cầu của bạn.</p>
+            <div class="img-container">
+                <img src="~/Image/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="Xe Ôtô 1" class="img-fluid" style="max-width: 100%; max-height: 100%;">
+            </div>
+        </div>
+    </section>
+</div>
 
 <div class="container">
     <div class="row">
@@ -24,8 +36,7 @@
                         <p class="card-text"><strong>Giá thuê:</strong> $@item.Gia</p>
                     </div>
                     <div class="card-footer">
-                        <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>
-                        <a href="#" class="btn btn-success btn-block">Thuê</a>
+                        <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary btn-block">Chi Tiết</a>
                     </div>
                 </div>
             </div>

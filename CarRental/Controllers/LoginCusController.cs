@@ -77,7 +77,7 @@ namespace CarRental.Controllers
 
             if (result != null)
             {
-                return RedirectToAction("Index", "Customers");
+                return RedirectToAction("IndexXe", "Xes");
             }
             else
             {

@@ -11,53 +11,54 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">CarRental</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Xes" asp-action="IndexXe">CarRental</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Khách Hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="NhanViens" asp-action="Index">Nhân viên</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Loaixes" asp-action="Index">Loại xe</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Xes" asp-action="Index">Xe</a>
                         </li>
-                         @*này ông thêm vô nha đăng xuât đăng nhập*@ 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="LoginCus" asp-action="LoginAdmin">Đăng xuất</a>
+                        </li>
+                        @*này ông thêm vô nha đăng xuât đăng nhập*@
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container mt-5">
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        <div class="container mt-5">
 
-        <section class="jumbotron text-center">
+            
+
             <div class="container">
-                <h1 class="jumbotron-heading">Thuê Xe Ôtô</h1>
-                <p class="lead text-muted">Chào mừng bạn đến với dịch vụ thuê xe ôtô CarRental. Chúng tôi cung cấp các loại xe ôtô phong cách và đa dạng để đáp ứng nhu cầu của bạn.</p>
-                <p>
-                    <img src="~/Image/download.jpg" alt="Xe Ôtô" class="img-fluid">
-                </p>
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
             </div>
-        </section>
-
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
         </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - CarRental - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
