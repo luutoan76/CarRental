@@ -2,6 +2,7 @@
 
 @{
     Layout = null;
+    
 }
 <!DOCTYPE html>
 <html>
@@ -47,11 +48,14 @@
                     </a>
 
                     <div class="navbar-collapse" id="">
-                        <div class="user_option">
-                            <p></p>
-                            <a asp-controller="LoginCus" asp-action="Index">
+                        <div class="user_option" >
+                            <div style="color:white; position:absolute; left:1050px; font-size:19px;">Welcome Back:
+                            <br/>@ViewBag.tenkhach</div>
+                            <a asp-controller="LoginCus" asp-action="Index" style="margin-right:20px;">
                                 Log out
                             </a>
+                            
+
                         </div>
                         <div class="custom_menu-btn">
                             <button onclick="openNav()">
