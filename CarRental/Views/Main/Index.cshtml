@@ -205,15 +205,34 @@
 
     <!-- end best section -->
     <!-- rent section -->
-
     <section class="rent_section layout_padding">
-
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h1 style="color:white;">Danh sách các xe</h1>
+            <section class="book_section">
+
+        <div class="form_container">
+                    <form asp-controller="Main" asp-action="Index">
+                <div class="form-row">
+                    <div class="col-lg-8">
+                        <div class="form-row">
+                            <div class="col-md-10">
+                                <label for="parkingName">Tìm kiếm xe</label>
+                                <input type="text" name="SearchString" class="form-control" placeholder="Nhập tên xe cần tìm...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="btn-container">
+                            <button type="submit" class="">
+                                Search
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+            </form>
+        </div>
+
+    </section>
             <div class="row">
                 @foreach (var item in Model)
                 {

@@ -22,11 +22,18 @@ namespace CarRental.Controllers
             _context = context;
             webHostEnvironment = hostEnvironment;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             string tenkhach = Request.Cookies["tenkhach"];
             ViewBag.tenkhach = tenkhach;
-            var car = _context.Xes.ToList();
+            //var car = _context.Xes.ToList();
+            var car = from m in _context.Xes
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                car = car.Where(s => s.Ten!.Contains(searchString));
+            }
             return View(car);
         }
         public async Task<IActionResult> Details(string id)
