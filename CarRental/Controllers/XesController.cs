@@ -29,6 +29,7 @@ namespace CarRental.Controllers
         // GET: Xes
         public async Task<IActionResult> Index()
         {
+
             var carRentContext = _context.Xes.Include(x => x.TenLoaiNavigation);
             return View(await carRentContext.ToListAsync());
         }

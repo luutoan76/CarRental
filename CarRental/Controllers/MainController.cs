@@ -44,6 +44,23 @@ namespace CarRental.Controllers
 
             return View(xe);
         }
+        public async Task<IActionResult> ThueXe(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var xe = await _context.Xes
+                .Include(x => x.TenLoaiNavigation)
+                .FirstOrDefaultAsync(m => m.BienSo == id);
+            if (xe == null)
+            {
+                return NotFound();
+            }
+
+            return View(xe);
+        }
         // cái code này là chức năng cho bên khách hàng nha ae
     }
 }
