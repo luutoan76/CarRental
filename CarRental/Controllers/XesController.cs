@@ -27,10 +27,27 @@ namespace CarRental.Controllers
         }
 
         // GET: Xes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( string searchString, int? to, int? from)
         {
-
-            var carRentContext = _context.Xes.Include(x => x.TenLoaiNavigation);
+            var carRentContext = from m in _context.Xes select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if(to !=null && from !=null)
+                {
+                    carRentContext = carRentContext.Where(s => s.Ten!.Contains(searchString) && s.Gia>=to && s.Gia<=from);
+                }
+                else
+                {
+                    carRentContext = carRentContext.Where(s => s.Ten!.Contains(searchString));
+                }
+            }
+            else
+            {
+                if (to != null && from != null)
+                {
+                    carRentContext = carRentContext.Where(s => s.Ten!.Contains(searchString) && s.Gia >= to && s.Gia <= from);
+                }
+            }
             return View(await carRentContext.ToListAsync());
         }
         public async Task<IActionResult> IndexXe()
