@@ -22,18 +22,37 @@ namespace CarRental.Controllers
             _context = context;
             webHostEnvironment = hostEnvironment;
         }
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, int? to, int? from)
         {
             string tenkhach = Request.Cookies["tenkhach"];
             ViewBag.tenkhach = tenkhach;
             //var car = _context.Xes.ToList();
-            var car = from m in _context.Xes
-                         select m;
-
+            
+            var car = from m in _context.Xes select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                car = car.Where(s => s.Ten!.Contains(searchString));
+                if (to != null && from != null)
+                {
+                    car = car.Where(s => s.Ten!.Contains(searchString) && s.Gia >= to && s.Gia <= from);
+                }
+                else
+                {
+                    car = car.Where(s => s.Ten!.Contains(searchString));
+                }
+
             }
+            else
+            {
+                if (to != null && from != null)
+                {
+                    car = car.Where(s => s.Ten!.Contains(searchString) && s.Gia >= to && s.Gia <= from);
+                }
+            }
+            /*
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            car = car.Where(s => s.Ten!.Contains(searchString));
+                        }*/
             return View(car);
         }
         public async Task<IActionResult> Details(string id)
