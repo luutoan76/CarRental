@@ -34,6 +34,7 @@ namespace CarRental.Controllers
                 if (to != null && from != null)
                 {
                     car = car.Where(s => s.Ten!.Contains(searchString) && s.Gia >= to && s.Gia <= from);
+                    car = car.Where(s => s.Ten!.Contains(searchString) && s.Gia>=to && s.Gia<=from);
                 }
                 else
                 {
@@ -41,6 +42,13 @@ namespace CarRental.Controllers
                 }
 
             }
+            /*else
+            {
+                if (to != null && from != null)
+                {
+                    car = car.Where(s => s.Ten!.Contains(searchString) && s.Gia>=to && s.Gia<=from);
+                }
+            }*/
             else
             {
                 if (to != null && from != null)
