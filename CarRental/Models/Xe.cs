@@ -15,7 +15,6 @@ namespace CarRental.Models
             DatXes = new HashSet<DatXe>();
             ThanhToans = new HashSet<ThanhToan>();
         }
-
         public int Id { get; set; }
         public string BienSo { get; set; }
         public string Ten { get; set; }
@@ -27,7 +26,6 @@ namespace CarRental.Models
         [NotMapped]
         [DisplayName("Upload file")]
         public IFormFile ImageFile { get; set; }
-
         public virtual Loaixe TenLoaiNavigation { get; set; }
         public virtual ICollection<DatXe> DatXes { get; set; }
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }

@@ -88,5 +88,66 @@ namespace CarRental.Controllers
                 return Index();
             }
         }
+        [HttpGet]
+        public IActionResult Editprofile()
+        {
+            var tenKhach = Request.Cookies["tenkhach"];
+            var customer = _context.Customers.FirstOrDefault(c => c.TenKhach == tenKhach);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            var editModel = new Customer
+            {
+                TenKhach = customer.TenKhach,
+                Sdt = customer.Sdt,
+                Email = customer.Email,
+                Tuoi = customer.Tuoi,
+                Pass = customer.Pass,
+                DiaChi = customer.DiaChi
+            };
+
+            return View(editModel);
+        }
+
+        [HttpPost]
+        public IActionResult Editprofile(Customer editModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var customer = _context.Customers.FirstOrDefault(c => c.TenKhach == editModel.TenKhach);
+
+                if (customer != null)
+                {
+                    customer.Sdt = editModel.Sdt;
+                    customer.Email = editModel.Email;
+                    customer.Tuoi = editModel.Tuoi;
+                    customer.Pass = editModel.Pass;
+                    customer.DiaChi = editModel.DiaChi;
+
+                    _context.SaveChanges();
+                    return RedirectToAction("Index", "Main");
+                }
+            }
+            return View(editModel);
+        }
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            var tenKhach = Request.Cookies["tenkhach"];
+            var customer = _context.Customers.FirstOrDefault(c => c.TenKhach == tenKhach);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(customer);
+        }
+
+
+
     }
 }
