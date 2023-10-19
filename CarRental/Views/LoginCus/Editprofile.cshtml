@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model CarRental.Models.Customer
+
+<h2>Chỉnh Sửa Thông Tin Cá Nhân</h2>
+@using (Html.BeginForm("Editprofile", "LoginCus", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.TenKhach)
+        @Html.TextBoxFor(model => model.TenKhach, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tuoi)
+        @Html.TextBoxFor(model => model.Tuoi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sdt)
+        @Html.TextBoxFor(model => model.Sdt, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DiaChi)
+        @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pass)
+        <div class="input-group">
+            @Html.PasswordFor(model => model.Pass, new { @class = "form-control", id = "password-field" })
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <input type="checkbox" id="show-password"> Hiện mật khẩu
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Thêm các trường khác theo nhu cầu -->
+    <button type="submit" class="btn btn-primary">Lưu</button>
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const passwordField = document.getElementById('password-field');
+        const showPasswordCheckbox = document.getElementById('show-password');
+
+        showPasswordCheckbox.addEventListener('change', function () {
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+    });
+</script>

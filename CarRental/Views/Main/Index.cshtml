@@ -49,8 +49,9 @@
 
                     <div class="navbar-collapse" id="">
                         <div class="user_option" >
-                            <div style="color:white; position:absolute; left:1050px; font-size:19px;">Welcome Back:
-                            <br/>@ViewBag.tenkhach</div>
+                            <div style="color:white; position:absolute; left:1050px; font-size:17px;">Welcome Back:
+                                <a asp-controller="Main" asp-action="Editprofile">@ViewBag.tenkhach</a>
+                            </div>
                             <a asp-controller="LoginCus" asp-action="Index" style="margin-right:20px;">
                                 Log out
                             </a>
