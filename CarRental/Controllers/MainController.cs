@@ -29,7 +29,7 @@ namespace CarRental.Controllers
             var car = from m in _context.Xes select m;
             //var car = _context.Xes.ToList();
             
-            var car = from m in _context.Xes select m;
+            //var car = from m in _context.Xes select m;
             if (!String.IsNullOrEmpty(searchString))
             {
                 car = car.Where(s => s.Ten!.Contains(searchString));
