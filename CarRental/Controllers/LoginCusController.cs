@@ -133,6 +133,20 @@ namespace CarRental.Controllers
             }
             return View(editModel);
         }
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            var tenKhach = Request.Cookies["tenkhach"];
+            var customer = _context.Customers.FirstOrDefault(c => c.TenKhach == tenKhach);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(customer);
+        }
+
 
 
     }

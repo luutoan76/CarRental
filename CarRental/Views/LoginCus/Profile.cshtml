@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+@model CarRental.Models.Customer
+
+<h2>Chi tiết khách hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>Tên:</th>
+        <td>@Model.TenKhach</td>
+    </tr>
+    <tr>
+        <th>Số điện thoại:</th>
+        <td>@Model.Sdt</td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Tuổi:</th>
+        <td>@Model.Tuoi</td>
+    </tr>
+    <tr>
+        <th>Địa chỉ:</th>
+        <td>@Model.DiaChi</td>
+    </tr>
+</table>
+
+<p>
+    <a asp-controller="LoginCus" asp-action="Editprofile" class="btn btn-primary">Chỉnh sửa hồ sơ</a>
+</p>
