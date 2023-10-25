@@ -20,7 +20,7 @@ namespace CarRental.Models
         public string Ten { get; set; }
         public string TenLoai { get; set; }
         public string MoTa { get; set; }
-        public int? Gia { get; set; }
+        public int Gia { get; set; }
         public string TrangThai { get; set; }
         public string Hinh { get; set; }
         [NotMapped]
@@ -29,5 +29,16 @@ namespace CarRental.Models
         public virtual Loaixe TenLoaiNavigation { get; set; }
         public virtual ICollection<DatXe> DatXes { get; set; }
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }
+
+    }
+
+    public class Histroy
+    {
+        public string Ten { get; set; }
+        public string Hinh { get; set; }
+        public int Gia { get; set; }
+        public DateTime? ngaydat { get; set; }
+        public DateTime? ngaytra { get; set; }
+
     }
 }
