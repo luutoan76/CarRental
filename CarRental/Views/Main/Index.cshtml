@@ -68,11 +68,13 @@
                         <div id="myNav" class="overlay">
                             <div class="overlay-content">
                                 <a href="index.html">Home</a>
-                                <a href="about.html">About</a>
+                                <a asp-controller="Main" asp-action="History">Lịch sử</a>
                                 <a href="car.html">Cars</a>
-                                <a href="blog.html">Blog</a>
+                                <a href="blog.html">Blog</a>        
                                 <a href="contact.html">Contact Us</a>
-                                <a href="#">Login</a>
+                                <a asp-controller="LoginCus" asp-action="Index">
+                                    Log out
+                                </a>                            
                             </div>
                         </div>
                     </div>
@@ -213,7 +215,7 @@
         <div class="form_container">
             <form asp-controller="Main" asp-action="Index">
                 <div class="form-row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         <div class="form-row">
                             <div class="col-md-10">
                                 <label for="parkingName">Tìm kiếm xe</label>
@@ -221,22 +223,22 @@
                             </div>
                         </div>
                     </div>
-                            <div class="col-lg-2">
-                                <div class="form-row">
-                                    <div class="col-md-10">
-                                        <label for="parkingName">Giá từ</label>
-                                        <input type="number" name="to" class="form-control" placeholder="0">
-                                    </div>
-                                </div>
+                    <div class="col-lg-2">
+                         <div class="form-row">
+                             <div class="col-md-10">
+                                 <label for="parkingName">Giá từ</label>
+                                 <input type="number" name="to" class="form-control" >
+                             </div>
+                         </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-row">
+                            <div class="col-md-10">
+                                <label for="parkingName">Đến</label>
+                                <input type="number" name="from" class="form-control" >
                             </div>
-                            <div class="col-lg-2">
-                                <div class="form-row">
-                                    <div class="col-md-10">
-                                        <label for="parkingName">Đến</label> 
-                                        <input type="number" name="from" class="form-control" placeholder="10000000">
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-4">
                         <div class="btn-container">
                             <button type="submit" class="">
@@ -245,15 +247,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2">
-                    <div class="form-row">
-                        <div class="col-md-10">
-                            <label for="parkingName">Giá từ</label>
-                            <input type="number" name="to" class="form-control" placeholder="0">
-                        </div>
-                        
-                    </div>
-                </div>
+                
                 
             </form>
         </div>
