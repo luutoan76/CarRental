@@ -80,7 +80,7 @@ namespace CarRental.Controllers
 
             if (result != null)
             {
-                return RedirectToAction("IndexXe", "Xes");
+                return RedirectToAction("Index", "Xes");
             }
             else
             {
@@ -88,6 +88,15 @@ namespace CarRental.Controllers
                 return Index();
             }
         }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("tenkhach"); 
+            return RedirectToAction("Index", "Main");
+        }
+
+
         [HttpGet]
         public IActionResult Editprofile()
         {

@@ -55,6 +55,7 @@ namespace CarRental
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Main}/{action=Index}/{id?}");
+
             });
         }
     }
