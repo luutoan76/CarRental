@@ -17,6 +17,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\media\" />
+    <Folder Include="wwwroot\Content\Client\vendor\bootstrap\scss\mixins\" />
+    <Folder Include="wwwroot\Content\Client\vendor\bootstrap\scss\utilities\" />
+    <Folder Include="wwwroot\Content\Client\vendor\bootstrap\scss\vendor\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\js\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\less\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\scss\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\sprites\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\svgs\" />
   </ItemGroup>
 
 </Project>

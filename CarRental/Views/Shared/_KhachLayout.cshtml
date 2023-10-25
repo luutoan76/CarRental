@@ -5,62 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thuê Xe Ôtô - CarRental</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/stylets.css" />
+    <link rel="stylesheet" href="stylets.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Xes" asp-action="IndexXe">CarRental</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">CarRental</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Loaixes" asp-action="Index">Loại xe</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Xes" asp-action="Index">Xe</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="NhanViens" asp-action="Index">Nhân viên</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Khách hàng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="LoginCus" asp-action="LoginAdmin">Đăng xuất</a>
-                        </li>
 
+                     @*   <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Khách Hàng</a>
+                        </li>*@
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="NhanViens" asp-action="Index">Nhân viên</a>
+                        </li>*@
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Loaixes" asp-action="Index">Loại xe</a>
+                        </li>*@
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Main" asp-action="Index">Trang chủ</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Loại xe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Main" asp-action="Index">Xe</a>
+                        </li>
+                          <li class="nav-item">
+                                  <a class="nav-link text-dark" asp-area="" asp-controller="LoginCus" asp-action="Profile">Cá nhân</a>
+                        </li>
+                  
+                        <li class="nav-item">
+                              <a class="nav-link text-dark" asp-area="" asp-controller="LoginCus" asp-action="Logout">Đăng xuất</a>
+                        </li>
+                      
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container mt-5">
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1 class="jumbotron-heading">Thuê Xe Ôtô</h1>
-                <p class="lead text-muted">Chào mừng bạn đến với quản lý xe ôtô CarRental. Chúng tôi cung cấp các loại xe ôtô phong cách và đa dạng để đáp ứng nhu cầu của bạn.</p>
-                <div class="img-container">
-                    <img src="~/Image/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="Xe Ôtô 1" class="img-fluid" style="max-width: 100%; max-height: 100%;">
-                </div>
-            </div>
-        </section>
-    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
