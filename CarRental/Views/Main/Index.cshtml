@@ -49,8 +49,8 @@
 
                     <div class="navbar-collapse" id="">
                         <div class="user_option" >
-                            <div style="color:white; position:absolute; left:1050px; font-size:19px;">Welcome Back:
-                            <br/>@ViewBag.tenkhach</div>
+                            <div style="color:white; position:absolute; left:1080px; font-size:17px;">Welcome Back:<br />
+                            <a href="#">@ViewBag.tenkhach</div>
                             <a asp-controller="LoginCus" asp-action="Index" style="margin-right:20px;">
                                 Log out
                             </a>
@@ -254,7 +254,7 @@
                 {
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
+                            <img src="@("~/Image/" + item.Hinh)" width="180" height="200" asp-append-version="true" class="card-img-top" alt="Image">
                             <div class="card-body text-center">
                                 <h5 class="card-title">@item.Ten</h5>
                                 <p class="card-text"><strong>Giá thuê:</strong> $@item.Gia</p>

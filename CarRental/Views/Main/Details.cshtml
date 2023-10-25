@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = null;
 }
 @model CarRental.Models.Xe
 <!DOCTYPE html>
@@ -55,7 +56,7 @@
                                 <div class="swiper-container single-product-slider">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
-                                            <img src="@("~/Image/"+Model.Hinh)" asp-append-version="true" />
+                                            <img src="@("~/Image/"+Model.Hinh)" width="500" height="400" asp-append-version="true" />
                                         </div>
                                     </div>
                                     <!-- Add Pagination -->
