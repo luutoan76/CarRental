@@ -259,7 +259,7 @@
                             <img src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
                             <div class="card-body text-center">
                                 <h5 class="card-title">@item.Ten</h5>
-                                <p class="card-text"><strong>Giá thuê:</strong> $@item.Gia</p>
+                                <p class="card-text"><strong>Giá thuê:</strong> @item.Gia$</p>
                             </div>
                             <div class="card-footer">
                                 <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>

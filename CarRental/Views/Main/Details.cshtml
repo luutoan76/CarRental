@@ -2,7 +2,8 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_KhachLayout.cshtml";
+
 }
 @model CarRental.Models.Xe
 <!DOCTYPE html>
@@ -73,7 +74,7 @@
                                         </dd>
                                         <div class="price-box pb-1">
                                             <span>Giá: </span>
-                                            <span class="new-price text-danger">$@Html.DisplayFor(model => model.Gia)/Ngày</span>
+                                            <span class="new-price text-danger">@Html.DisplayFor(model => model.Gia)$/Ngày</span>
                                         </div>
                                         <div class="rating-box-wrap pb-7">
                                             <div class="rating-box">

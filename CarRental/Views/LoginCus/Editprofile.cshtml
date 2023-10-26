@@ -3,6 +3,28 @@
 }
 @model CarRental.Models.Customer
 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/css/history/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/history/magnific-popup.css">
+    <link rel="stylesheet" href="/css/history/jquery-ui.css">
+    <link rel="stylesheet" href="/css/history/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/history/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="/css/history/aos.css">
+
+    <link rel="stylesheet" href="/css/history/style.css">
+</head>
+
 <div class="container">
     <h2 class="text-center">Chỉnh Sửa Thông Tin Cá Nhân</h2>
     @using (Html.BeginForm("Editprofile", "LoginCus", FormMethod.Post))
@@ -38,9 +60,9 @@
                         <input asp-for="DiaChi" class="form-control" id="DiaChi" />
                     </div>
                     <div class="form-group password-toggle">
-                        <label for="Pass">Mật khẩu hiện tại</label>
+                        <label for="Pass">Mật khẩu mới</label>
                         <div class="input-group">
-                            <input asp-for="Pass" class="form-control" id="password-field" readonly />
+                            <input asp-for="Pass" class="form-control" id="Pass" type="password"  readonly />
                             <div class="input-group-append">
                                 <span class="input-group-text">
                                     <input type="checkbox" id="show-password"> Hiển thị mật khẩu
@@ -65,21 +87,33 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const editPasswordCheckbox = document.getElementById('edit-password');
-        const passwordField = document.getElementById('password-field');
+        const showPasswordCheckbox = document.getElementById('show-password');
+        const passwordField = document.getElementById('Pass');
+
+        passwordField.style.display = 'none';
+        showPasswordCheckbox.disabled = true;
 
         editPasswordCheckbox.addEventListener('change', function () {
+            passwordField.style.display = editPasswordCheckbox.checked ? 'block' : 'none';
             passwordField.readOnly = !editPasswordCheckbox.checked;
+
+            if (editPasswordCheckbox.checked) {
+                showPasswordCheckbox.disabled = false;
+            } else {
+
+                showPasswordCheckbox.checked = false;
+                passwordField.type = 'password';
+                showPasswordCheckbox.disabled = true;
+            }
         });
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-        const showPasswordCheckbox = document.getElementById('show-password');
-        const passwordField = document.getElementById('password-field');
 
         showPasswordCheckbox.addEventListener('change', function () {
             passwordField.type = showPasswordCheckbox.checked ? 'text' : 'password';
         });
     });
 </script>
+
+
 
 <style>
     body {
@@ -119,3 +153,12 @@
         cursor: pointer;
     }
 </style>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/aos.js"></script>
+
+    <script src="js/main.js"></script>
