@@ -55,22 +55,23 @@ namespace CarRental.Controllers
             return View(xe);
         }
         public async Task<IActionResult> ThueXe(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var xe = await _context.Xes
-                .Include(x => x.TenLoaiNavigation)
-                .FirstOrDefaultAsync(m => m.BienSo == id);
-            if (xe == null)
-            {
-                return NotFound();
-            }
+			var xe = await _context.Xes
+				.Include(x => x.TenLoaiNavigation)
+				.FirstOrDefaultAsync(m => m.BienSo == id);
+			ViewBag.Xe = xe;
+			if (xe == null)
+			{
+				return NotFound();
+			}
 
-            return View(xe);
-        }
+			return View();
+		}
         // cái code này là chức năng cho bên khách hàng nha ae
 
         public IActionResult History()
@@ -93,7 +94,7 @@ namespace CarRental.Controllers
             foreach (string item in dsbienso)
             {
                 var tenxe = _context.Xes.Where(a => a.BienSo == item).FirstOrDefaultAsync();
-                list.Add(new Histroy() { Ten = tenxe.Result.Ten, Gia = tenxe.Result.Gia, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat , ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra});
+                list.Add(new Histroy() { Ten = tenxe.Result.Ten, Gia =(int) tenxe.Result.Gia, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat , ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra});
 
             }
             

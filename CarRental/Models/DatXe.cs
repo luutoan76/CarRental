@@ -19,6 +19,7 @@ namespace CarRental.Models
         public DateTime? NgayTra { get; set; }
         public string MoTa { get; set; }
 
+        public string SDT { get; set; }
         public virtual Xe BienSoNavigation { get; set; }
         public virtual Customer TenKhachNavigation { get; set; }
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }
