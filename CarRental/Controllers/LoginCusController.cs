@@ -80,7 +80,7 @@ namespace CarRental.Controllers
 
             if (result != null)
             {
-                return RedirectToAction("Index", "Xes");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
