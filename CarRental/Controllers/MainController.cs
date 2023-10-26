@@ -75,16 +75,13 @@ namespace CarRental.Controllers
 
         public IActionResult History()
         {
+
             string tenkhach = Request.Cookies["tenkhach"];
             ViewBag.tenkhach = tenkhach;
             var info = _context.DatXes.Where(a => a.TenKhach == tenkhach).ToList();
             var bienso = info.Select(a => a.BienSo).ToList();
-            
-
             List<string> dsbienso = new List<string>();
-            
             IList<Histroy> list = new List<Histroy>();
-
             foreach (string item in bienso)
             {
                 dsbienso.Add(item);
