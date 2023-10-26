@@ -31,13 +31,12 @@
 	<link rel="stylesheet" href="~/assets/css/plugins/nice-select.css">
 	<link rel="stylesheet" href="~/assets/css/plugins/magnific-popup.min.css" />
 
-	<!-- Minify Version -->
-	<!-- <link rel="stylesheet" href="~/assets/css/vendor/vendor.min.css"> -->
-	<!-- <link rel="stylesheet" href="~/assets/css/plugins/plugins.min.css"> -->
-	<!-- Style CSS -->
-	<link rel="stylesheet" href="~/assets/css/style.css">
-	<link rel="stylesheet" href="/css/site.css">
-	<!-- <link rel="stylesheet" href="~/assets/css/style.min.css"> -->
+    <!-- Minify Version -->
+    <!-- <link rel="stylesheet" href="~/assets/css/vendor/vendor.min.css"> -->
+    <!-- <link rel="stylesheet" href="~/assets/css/plugins/plugins.min.css"> -->
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="~/assets/css/style.min.css"> -->
 
 </head>
 
@@ -49,122 +48,101 @@
 		</div>
 	}
 
-	<div class="main-wrapper">
-		<!-- Begin Main Content Area -->
-		<main class="main-content">
-			<div class="checkout-area section-space-y-axis-100">
-				<div class="container">
-					<div class="row col-lg-12">
-						<div class="form-order col-lg-4 col-12">
-							<form method="post" asp-action="Order" asp-controller="Checkout">
-								<div class="checkbox-form">
-									<h3>Thông tin khách hàng</h3>
-									<div class="row">
-
-										<div class="col-md-6">
-											<div class="checkout-form-list">
-												<label>Tên khach <span class="required">*</span></label>
-												<input placeholder="" asp-for="TenKhach" type="text">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="checkout-form-list">
-												<label>SDT <span class="required">*</span></label>
-												<input placeholder="" asp-for="SDT" type="text">
-												<input hidden placeholder="" asp-for="BienSo" type="text" value="@xe.BienSo">
-											</div>
-										</div>
-
-										<div class="col-md-6">
-											<div class="checkout-form-list">
-												<label>Ngày đặt xe <span class="required">*</span></label>
-												<input type="date" asp-for="NgayDat" name="ngayDat" required value="{{ date('Y-m-d', strtotime('+1 day')) }}">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="checkout-form-list">
-												<label>Ngày trả xe <span class="required">*</span></label>
-												<input type="date" asp-for="NgayTra" name="ngayTra" required value="{{ date('Y-m-d', strtotime('+3 day')) }}">
-											</div>
-										</div>
-									</div>
-									<div class="order-notes">
-										<div class="checkout-form-list checkout-form-list-2">
-											<label>Mo ta</label>
-											<textarea asp-for="MoTa" id="checkout-mess" cols="30" rows="10"></textarea>
-										</div>
-									</div>
-								</div>
-								
-								<div class="payment-method">
-									<div class="payment-accordion">
-										<div class="order-button-payment">
-											<input value="Thuê" type="submit">
-										</div>
-									</div>
-								</div>
-							</form>
-							
-						</div>
-						<div class=" col-lg-8 col-12">
-							<div class="your-order">
-								<h3>Your order</h3>
-								<div class="your-order-table table-responsive">
-									<table class="table">
-										<thead>
-											<tr>
-												<th class="cart-product-name">Xe</th>											
-												<th class="cart-product-total">BienSo</th>
-												<th class="cart-product-total">TenLoai</th>
-												<th class="cart-product-total">MoTa</th>
-												<th class="cart-product-total">Thành tiền</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="cart_item">
-												<td class="cart-product-name">
-													@xe.Ten
-													<strong class="product-quantity">
-													</strong>
-												</td>
-												<td class="cart-product-name">
-													@xe.BienSo
-													<strong class="product-quantity">
-													</strong>
-												</td>
-												<td class="cart-product-name">
-													@xe.TenLoai
-													<strong class="product-quantity">
-													</strong>
-												</td>
-												<td class="cart-product-name">
-													@xe.MoTa
-													<strong class="product-quantity">
-													</strong>
-												</td>
-												<td class="cart-product-total"><span class="amount">@xe.Gia</span></td>
-											</tr>
-
-										</tbody>
-										<tfoot>
-											<tr class="order-total">
-												<th>Tổng cộng</th>
-												<td><strong><span class="amount">@xe.Gia</span></strong></td>
-											</tr>
-											
-										</tfoot>
-									</table>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</main>
-		<!-- Main Content Area End Here -->
-	</div>
+    <div class="main-wrapper">
+        <!-- Begin Main Content Area -->
+        <main class="main-content">
+            <div class="checkout-area section-space-y-axis-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <form action="javascript:void(0)">
+                                <div class="checkbox-form">
+                                    <h3>Thông tin khách hàng</h3>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="checkout-form-list">
+                                                <label>Họ <span class="required">*</span></label>
+                                                <input placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="checkout-form-list">
+                                                <label>Tên <span class="required">*</span></label>
+                                                <input placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="checkout-form-list">
+                                                <label>Địa chỉ<span class="required">*</span></label>
+                                                <input placeholder="Street address" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="checkout-form-list">
+                                                <label>Email <span class="required">*</span></label>
+                                                <input placeholder="" type="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="checkout-form-list">
+                                                <label>Số điện thoại <span class="required">*</span></label>
+                                                <input type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="order-notes">
+                                        <div class="checkout-form-list checkout-form-list-2">
+                                            <label>Ghi chú</label>
+                                            <textarea id="checkout-mess" cols="30" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="your-order">
+                                <h3>Your order</h3>
+                                <div class="your-order-table table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="cart-product-name">Xe</th>
+                                                <th class="cart-product-total">Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="cart_item">
+                                                <td class="cart-product-name">
+                                                    @Html.DisplayFor(model => model.Ten)<strong class="product-quantity">
+                                                    </strong>
+                                                </td>
+                                                <td class="cart-product-total"><span class="amount">$@Html.DisplayFor(model => model.Gia)</span></td>
+                                            </tr>
+                                        
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="order-total">
+                                                <th>Tổng cộng</th>
+                                                <td><strong><span class="amount">$@Html.DisplayFor(model => model.Gia)</span></strong></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-accordion">
+                                        <div class="order-button-payment">
+                                            <input value="Thuê" type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Main Content Area End Here -->
+    </div>
 
 	<!-- Global Vendor, plugins JS -->
 	<!-- JS Files
