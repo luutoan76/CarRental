@@ -210,68 +210,67 @@
     <!-- rent section -->
     <section class="rent_section layout_padding">
         <div class="container">
+
             <section class="book_section">
 
-        <div class="form_container">
-            <form asp-controller="Main" asp-action="Index">
-                <div class="form-row">
-                    <div class="col-lg-7">
+                <div class="form_container">
+                    <form asp-controller="Main" asp-action="Index">
                         <div class="form-row">
-                            <div class="col-md-10">
-                                <label for="parkingName">Tìm kiếm xe</label>
-                                <input type="text" name="SearchString" class="form-control" placeholder="Nhập tên xe cần tìm...">
+                            <div class="col-lg-7">
+                                <div class="form-row">
+                                    <div class="col-md-10">
+                                        <label for="parkingName">Tìm kiếm xe</label>
+                                        <input type="text" name="SearchString" class="form-control" placeholder="Nhập tên xe cần tìm...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-row">
+                                    <div class="col-md-10">
+                                        <label for="parkingName">Giá từ</label>
+                                        <input type="number" name="to" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-row">
+                                    <div class="col-md-10">
+                                        <label for="parkingName">Đến</label>
+                                        <input type="number" name="from" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn-container">
+                                    <button type="submit" class="">
+                                        Search
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2">
-                         <div class="form-row">
-                             <div class="col-md-10">
-                                 <label for="parkingName">Giá từ</label>
-                                 <input type="number" name="to" class="form-control" >
-                             </div>
-                         </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-row">
-                            <div class="col-md-10">
-                                <label for="parkingName">Đến</label>
-                                <input type="number" name="from" class="form-control" >
-                            </div>
+                    </form>
+                </div>
+
+
+            </section>
+        </div>
+        <div class="rent_container">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img width="130" height="200" src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@item.Ten</h5>
+                            <p class="card-text"><strong>Giá thuê:</strong> $@item.Gia</p>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="btn-container">
-                            <button type="submit" class="">
-                                Search
-                            </button>
+                        <div class="card-footer">
+                            <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>
+                            <a href="@Url.Action("ThueXe", new { id = item.BienSo })" class="btn btn-success btn-block">Thuê</a>
                         </div>
-                    </div>
                     </div>
                 </div>
-                
-                
-            </form>
-        </div>
-
-    </section>
-            <div class="row">
-                @foreach (var item in Model)
-                {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img width="130" height="200" src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">@item.Ten</h5>
-                                <p class="card-text"><strong>Giá thuê:</strong> $@item.Gia</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>
-                                <a href="@Url.Action("ThueXe", new { id = item.BienSo })" class="btn btn-success btn-block">Thuê</a>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
+            }
         </div>
 
 
@@ -284,6 +283,7 @@
             </div>
         </div>
     </section>
+            
 
 
 
