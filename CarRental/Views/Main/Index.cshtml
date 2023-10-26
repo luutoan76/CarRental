@@ -49,9 +49,8 @@
 
                     <div class="navbar-collapse" id="">
                         <div class="user_option" >
-                            <div style="color:white; position:absolute; left:1070px; font-size:17px;">Xin chào:
-                                <a asp-controller="LoginCus" asp-action="Profile">@ViewBag.tenkhach</a>
-                            </div>
+                            <div style="color:white; position:absolute; left:1080px; font-size:17px;">Xin chào:
+                            <a asp-controller="LoginCus" asp-action="Profile">@ViewBag.tenkhach</a> </div>
                             <a asp-controller="LoginCus" asp-action="Index" style="margin-right:20px;">
                                 Log in
                             </a>
@@ -251,26 +250,25 @@
                     </form>
                 </div>
 
-
-            </section>
-        </div>
-        <div class="rent_container">
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img width="130" height="200" src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">@item.Ten</h5>
-                            <p class="card-text"><strong>Giá thuê:</strong> $@item.Gia</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>
-                            <a href="@Url.Action("ThueXe", new { id = item.BienSo })" class="btn btn-success btn-block">Thuê</a>
+    </section>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img width="200" height="230" src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@item.Ten</h5>
+                                <p class="card-text"><strong>Giá thuê:</strong> @item.Gia$</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>
+                                <a href="@Url.Action("ThueXe", new { id = item.BienSo })" class="btn btn-success btn-block">Thuê</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
 
 

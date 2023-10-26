@@ -12,9 +12,6 @@
         <div class="container">
             <h1 class="jumbotron-heading">Thuê Xe Ôtô</h1>
             <p class="lead text-muted">Chào mừng bạn đến với quản lý xe ôtô CarRental. Chúng tôi cung cấp các loại xe ôtô phong cách và đa dạng để đáp ứng nhu cầu của bạn.</p>
-            <div class="img-container">
-                <img src="~/Image/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="Xe Ôtô 1" class="img-fluid" style="max-width: 100%; max-height: 100%;">
-            </div>
         </div>
     </section>
 </div>
@@ -30,7 +27,7 @@
         {
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
+                    <img src="@("~/Image/" + item.Hinh)" width="150" height="200" asp-append-version="true" class="card-img-top" alt="Image">
                     <div class="card-body text-center">
                         <h5 class="card-title">@item.Ten</h5>
                         <p class="card-text"><strong>Giá thuê:</strong> $@item.Gia</p>
