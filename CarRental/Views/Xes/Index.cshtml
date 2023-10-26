@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<CarRental.Models.Xe>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Vehicle List";
 }
 
-<h1>Index</h1>
+<h1>Vehicle List</h1>
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New Vehicle</a>
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -30,10 +32,10 @@
                 Trạng thái
             </th>
             <th>
-                Hình
+                Loại xe
             </th>
             <th>
-                Loại xe
+                Hình
             </th>
         </tr>
     </thead>
@@ -63,7 +65,7 @@
             </td>
             
             <td>
-                @Html.DisplayFor(modelItem => item.TenLoai)
+                @Html.DisplayFor(modelItem => item.TenLoaiNavigation.TenLoai)
             </td>
             <td>
             </td>

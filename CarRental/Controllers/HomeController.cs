@@ -18,10 +18,16 @@ namespace CarRental.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index([FromServices] CarRentContext dbContext)
         {
+            ViewBag.CoutXe = dbContext.Xes.Count();
+            ViewBag.CoutLoaiXe = dbContext.Loaixes.Count();
+            ViewBag.CoutNhanVien = dbContext.NhanViens.Count();
+            ViewBag.CoutCustomer = dbContext.Customers.Count();
+
             return View();
         }
+
 
         public IActionResult Privacy()
         {

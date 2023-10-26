@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/_KhachLayout.cshtml";
+}
+@model CarRental.Models.Customer
+
+<div class="container">
+    <h2 class="text-center">Thông tin cá nhân:</h2>
+
+    <div class="label-box">
+        <label for="Name">Tên:</label>
+        <span>@Model.TenKhach</span>
+    </div>
+    <div class="label-box">
+        <label for="PhoneNumber">Số điện thoại:</label>
+        <span>@Model.Sdt</span>
+    </div>
+    <div class="label-box">
+        <label for="Email">Email:</label>
+        <span>@Model.Email</span>
+    </div>
+    <div class="label-box">
+        <label for="Age">Tuổi:</label>
+        <span>@Model.Tuoi</span>
+    </div>
+    <div class="label-box">
+        <label for="Address">Địa chỉ:</label>
+        <span>@Model.DiaChi</span>
+    </div>
+</div>
+
+<div class="button-container">
+    <a asp-controller="LoginCus" asp-action="Editprofile" class="btn btn-primary">Chỉnh sửa thông tin</a>
+    <a asp-controller="Main" asp-action="Index" class="btn btn-secondary">Quay về trang chủ</a>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .label-box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+        .label-box label {
+            font-weight: bold;
+        }
+
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .text-center {
+        text-align: center; /* Center align the text within the h2 element */
+    }
+</style>

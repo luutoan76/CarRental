@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "~/Views/Shared/_KhachLayout.cshtml";
+}
+@model CarRental.Models.Customer
+
+<div class="container">
+    <h2 class="text-center">Chỉnh Sửa Thông Tin Cá Nhân</h2>
+    @using (Html.BeginForm("Editprofile", "LoginCus", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="form-group">
+                        <label for="TenKhach">Họ và tên</label>
+                        <input asp-for="TenKhach" class="form-control" id="TenKhach" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Sdt">Số điện thoại</label>
+                        <input asp-for="Sdt" class="form-control" id="Sdt" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input asp-for="Email" class="form-control" id="Email" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tuoi">Tuổi</label>
+                        <input asp-for="Tuoi" class="form-control" id="Tuoi" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DiaChi">Địa chỉ</label>
+                        <input asp-for="DiaChi" class="form-control" id="DiaChi" />
+                    </div>
+                    <div class="form-group password-toggle">
+                        <label for="Pass">Mật khẩu hiện tại</label>
+                        <div class="input-group">
+                            <input asp-for="Pass" class="form-control" type="password" id="password-field" readonly />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <input type="checkbox" id="show-password"> Hiển thị mật khẩu
+                                    <input type="checkbox" id="edit-password"> Chỉnh sửa mật khẩu
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    <div class="text-center">
+        <a asp-controller="LoginCus" asp-action="Profile" class="btn btn-secondary">Quay về</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editPasswordCheckbox = document.getElementById('edit-password');
+        const passwordField = document.getElementById('password-field');
+
+        editPasswordCheckbox.addEventListener('change', function () {
+            passwordField.readOnly = !editPasswordCheckbox.checked;
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const showPasswordCheckbox = document.getElementById('show-password');
+        const passwordField = document.getElementById('password-field');
+
+        showPasswordCheckbox.addEventListener('change', function () {
+            passwordField.type = showPasswordCheckbox.checked ? 'text' : 'password';
+        });
+    });
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .container {
+        width: 1300px;
+        margin-top: 10px;
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .label-box {
+        display: inline-block;
+        width: 300px;
+        margin-right: 20px;
+    }
+
+    .password-toggle {
+        position: relative;
+    }
+
+        .password-toggle input {
+            padding-right: 30px;
+        }
+
+    .password-toggle-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+</style>

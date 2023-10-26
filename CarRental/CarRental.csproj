@@ -1,7 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>WinExe</OutputType>
+    <StartupObject></StartupObject>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +21,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\media\" />
+    <Folder Include="wwwroot\Content\Client\vendor\bootstrap\scss\mixins\" />
+    <Folder Include="wwwroot\Content\Client\vendor\bootstrap\scss\utilities\" />
+    <Folder Include="wwwroot\Content\Client\vendor\bootstrap\scss\vendor\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\js\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\less\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\scss\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\sprites\" />
+    <Folder Include="wwwroot\Content\Client\vendor\fontawesome-free\svgs\" />
   </ItemGroup>
 
 </Project>
