@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CarRental.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Data.SqlClient;
 
 namespace CarRental.Controllers
 {
@@ -155,8 +157,8 @@ namespace CarRental.Controllers
 
             return View(customer);
         }
-
-
+        
+        
 
     }
 }

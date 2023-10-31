@@ -28,6 +28,7 @@ namespace CarRental
             services.AddSession();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<CarRentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("constring")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

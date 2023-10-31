@@ -91,7 +91,13 @@ namespace CarRental.Controllers
             foreach (string item in dsbienso)
             {
                 var tenxe = _context.Xes.Where(a => a.BienSo == item).FirstOrDefaultAsync();
-                list.Add(new Histroy() { Ten = tenxe.Result.Ten, Gia = tenxe.Result.Gia, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat , ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra});
+                DateTime ngay1 = (DateTime)info.FirstOrDefault(a => a.BienSo == item).NgayDat;
+                DateTime ngay2 = (DateTime)info.FirstOrDefault(a => a.BienSo == item).NgayTra;
+                int price = tenxe.Result.Gia;
+                TimeSpan distance = ngay2.Subtract(ngay1);
+                int day = ngay2.Subtract(ngay1).Days;
+                int total = price * day;
+                list.Add(new Histroy() { Ten = tenxe.Result.Ten, Gia = total, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat, ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra});
 
             }
             
