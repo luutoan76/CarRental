@@ -47,6 +47,7 @@ namespace CarRental.Controllers
             var xe = await _context.Xes
                 .Include(x => x.TenLoaiNavigation)
                 .FirstOrDefaultAsync(m => m.BienSo == id);
+           
             if (xe == null)
             {
                 return NotFound();
@@ -55,16 +56,18 @@ namespace CarRental.Controllers
             return View(xe);
         }
         public async Task<IActionResult> ThueXe(string id)
-        {
+		{
+            string tenkhach = Request.Cookies["tenkhach"];
+            ViewBag.tenkhach = tenkhach;
             if (id == null)
-            {
-                return NotFound();
-            }
+			{
+				return NotFound();
+			}
 
             var xe = await _context.Xes
                 .Include(x => x.TenLoaiNavigation)
                 .FirstOrDefaultAsync(m => m.BienSo == id);
-            ViewBag.Xe= xe;
+             ViewBag.Xe = xe;
             if (xe == null)
             {
                 return NotFound();
