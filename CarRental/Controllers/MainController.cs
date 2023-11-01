@@ -47,6 +47,7 @@ namespace CarRental.Controllers
             var xe = await _context.Xes
                 .Include(x => x.TenLoaiNavigation)
                 .FirstOrDefaultAsync(m => m.BienSo == id);
+           
             if (xe == null)
             {
                 return NotFound();
@@ -64,12 +65,13 @@ namespace CarRental.Controllers
             var xe = await _context.Xes
                 .Include(x => x.TenLoaiNavigation)
                 .FirstOrDefaultAsync(m => m.BienSo == id);
+             ViewBag.Xe = xe;
             if (xe == null)
             {
                 return NotFound();
             }
 
-            return View(xe);
+            return View();
         }
         // cái code này là chức năng cho bên khách hàng nha ae
 
