@@ -57,6 +57,12 @@ namespace CarRental.Controllers
         }
         public async Task<IActionResult> ThueXe(string id)
 		{
+			string tenkhach = Request.Cookies["tenkhach"];
+			ViewBag.tenkhach = tenkhach;
+			if (tenkhach == null) //Chưa đăng nhập
+				return RedirectToAction("Index", "Logincus");
+			
+
 			if (id == null)
 			{
 				return NotFound();
