@@ -26,18 +26,18 @@ namespace CarRental.Models
 		[NotMapped]
 		[DisplayName("Upload file")]
 		public IFormFile ImageFile { get; set; }
+
 		public virtual Loaixe TenLoaiNavigation { get; set; }
-		public virtual ICollection<DatXe> DatXes { get; set; }
-		public virtual ICollection<ThanhToan> ThanhToans { get; set; }
-	}
-
-	public class Histroy
-    {
-        public string Ten { get; set; }
-        public string Hinh { get; set; }
-        public int Gia { get; set; }
-        public DateTime? ngaydat { get; set; }
-        public DateTime? ngaytra { get; set; }
-
+        public virtual ICollection<DatXe> DatXes { get; set; }
+        public virtual ICollection<ThanhToan> ThanhToans { get; set; }
     }
+	public class Histroy
+	{
+		public string Ten { get; set; }
+		public string Hinh { get; set; }
+		public int Gia { get; set; }
+		public DateTime? ngaydat { get; set; }
+		public DateTime? ngaytra { get; set; }
+
+	}
 }
