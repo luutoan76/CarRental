@@ -1,14 +1,14 @@
 ﻿@model CarRental.Models.Customer
+
 @{
     Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Design by foolishdeveloper.com -->
-    <title>Login Customer</title>
+    <title>Reset Password</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -56,8 +56,8 @@
         }
 
         form {
-            height: 620px;
-            width: 450px;
+            height: 420px;
+            width: 540px;
             background-color: rgba(255,255,255,0.13);
             position: absolute;
             transform: translate(-50%,-50%);
@@ -153,47 +153,93 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="post" asp-action="Index" asp-controller="LoginCus">
-        <h3>Login Customer</h3>
-        <strong style="text-align:center;">@ViewBag.Thongbao</strong>
+    <form method="post" asp-action="ResetPass">
+        <h3>Xin chào @ViewBag.TenKhach xin hãy nhập mật khẩu mới</h3>
 
-        <label for="username">Username</label>
-        <input type="text" asp-for="TenKhach" placeholder="Username" id="username">
-
-        <label for="password">Password</label>
-        <input type="password" asp-for="Pass" placeholder="Password" id="password">
-
-        <div style="position:absolute; right:35px; margin-top:10px;">
-            <style>
-                a:link {
-                    text-decoration: none;
-                }
-
-                a:visited {
-                    text-decoration: none;
-                }
-
-                a:hover {
-                    text-decoration: underline;
-                }
-
-                a:active {
-                    text-decoration: underline;
-                }
-            </style>
-            <a asp-controller="LoginCus" asp-action="FindEmail">Quên mật khẩu</a>
-        </div>
-        <button type="submit">Log In</button>
-
+        <label for="username">Password</label>
+        <input type="password" asp-for="Pass" placeholder="Password" id="username">
         <div>
-            <button type="button" onclick="window.location.href = '@Url.Action("Register", "LoginCus")'">Sign in</button>
+            <button type="submit" onclick="window.location.href = '@Url.Action("FindEmail", "LoginCus")'">Xác nhận</button>
         </div>
 
-        <div style="position:absolute; right:35px; margin-top:10px;">
-            Đăng nhập cho <a asp-controller="LoginCus" asp-action="LoginAdmin">admin</a>
-        </div>
 
     </form>
 
 </body>
 </html>
+
+
+@*
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Simple login form</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <style>
+          html, body {
+          display: flex;
+          justify-content: center;
+          font-family: Roboto, Arial, sans-serif;
+          font-size: 15px;
+          }
+          form {
+          border: 5px solid #f1f1f1;
+          }
+          input[type=text], input[type=password] {
+          width: 100%;
+          padding: 16px 8px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+          }
+          button {
+          background-color: #8ebf42;
+          color: white;
+          padding: 14px 0;
+          margin: 10px 0;
+          border: none;
+          cursor: grab;
+          width: 100%;
+          }
+          h1 {
+          text-align:center;
+          }
+          button:hover {
+          opacity: 0.8;
+          }
+          .formcontainer {
+          text-align: left;
+          margin: 24px 50px 12px;
+          }
+          .container {
+          padding: 16px 0;
+          text-align:left;
+          }
+          span.psw {
+          float: right;
+          padding-top: 0;
+          padding-right: 15px;
+          }
+          /* Change styles for span on extra small screens */
+
+        </style>
+    </head>
+    <body>
+        <form asp-action="ResetPass">
+            <h1>Xin chào @ViewBag.TenKhach xin hãy nhập mật khẩu mới</h1>
+            <div class="formcontainer">
+                <hr />
+                <div class="container">
+                    <label for="uname"><strong>PassWord</strong></label>
+                    <input type="text" asp-for="Pass" placeholder="Enter password"  required>
+                    <label for="psw"><strong>Re-Password</strong></label>
+                    <input type="password" placeholder="Enter Repassword"  required>
+                </div>
+                <button type="submit">Xác nhận</button>
+
+            </div>
+        </form>
+    </body>
+    </html>
+*@

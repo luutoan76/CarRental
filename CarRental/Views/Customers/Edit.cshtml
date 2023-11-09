@@ -4,43 +4,45 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Chỉnh sửa</h1>
 
-<h4>Customer</h4>
+<h4>Thông tin khách hàng</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form method="post" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <label class="control-label">Id</label>
+                <input asp-for="Id" class="form-control" readonly />
             </div>
-            <input type="hidden" asp-for="TenKhach" />
             <div class="form-group">
-                <label asp-for="Sdt" class="control-label"></label>
-                <input asp-for="Sdt" class="form-control" />
+                <label  class="control-label">Tên khách</label>
+                <input asp-for="TenKhach" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Sđt</label>
+                <input asp-for="Sdt" type="tel" class="form-control" required/>
                 <span asp-validation-for="Sdt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <label  class="control-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" required />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tuoi" class="control-label"></label>
-                <input asp-for="Tuoi" class="form-control" />
+                <label  class="control-label">Tuổi</label>
+                <input asp-for="Tuoi" class="form-control" required/>
                 <span asp-validation-for="Tuoi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pass" class="control-label"></label>
-                <input asp-for="Pass" class="form-control" />
+                <label  class="control-label">Password</label>
+                <input asp-for="Pass" class="form-control"  required/>
                 <span asp-validation-for="Pass" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DiaChi" class="control-label"></label>
-                <input asp-for="DiaChi" class="form-control" />
+                <label  class="control-label">Địa chỉ</label>
+                <input asp-for="DiaChi" class="form-control" required />
                 <span asp-validation-for="DiaChi" class="text-danger"></span>
             </div>
             <div class="form-group">

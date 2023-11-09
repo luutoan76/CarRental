@@ -65,14 +65,9 @@ namespace CarRental.Controllers
         }
 
         // GET: Customers/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = _context.Customers.Where(a => a.Id == id).FirstOrDefault();
             if (customer == null)
             {
                 return NotFound();
@@ -85,34 +80,25 @@ namespace CarRental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,TenKhach,Sdt,Email,Tuoi,Pass,DiaChi")] Customer customer)
+        public IActionResult Edit(int? id, Customer customer)
         {
-            if (id != customer.TenKhach)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
+                var cus = _context.Customers.FirstOrDefault(c => c.Id == id);
+                if (cus != null)
                 {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
+                    //cus.TenKhach = customer.TenKhach;
+                    cus.Sdt = customer.Sdt;
+                    cus.Email = customer.Email;
+                    cus.Tuoi = customer.Tuoi;
+                    cus.Pass = customer.Pass;
+                    cus.DiaChi = customer.DiaChi;
+                    _context.SaveChanges();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomerExists(customer.TenKhach))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                //_context.Update(customer);
+                //await _context.SaveChangesAsync();
             }
-            return View(customer);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Customers/Delete/5
