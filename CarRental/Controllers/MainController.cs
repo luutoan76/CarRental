@@ -59,9 +59,8 @@ namespace CarRental.Controllers
 		{
 			string tenkhach = Request.Cookies["tenkhach"];
 			ViewBag.tenkhach = tenkhach;
-			if (tenkhach == null) //Chưa đăng nhập
+			if ( tenkhach == null) //Chưa đăng nhập
 				return RedirectToAction("Index", "Logincus");
-			
 
 			if (id == null)
 			{
