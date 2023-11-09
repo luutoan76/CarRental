@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CarRental.Models.ThanhToan>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tên khách</th>
+            <th>Id</th>
+            <th>Biển số</th>
+            <th>Phí trễ</th>
+            <th>Ngày in</th>
+            <th>Tổng cộng</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenKhach</td>
+                <td>@item.Id</td>
+                <td>@item.BienSo</td>
+                <td>@item.PhiTre</td>
+                <td>@item.NgayIn</td>
+                <td>@item.Total</td>
+            </tr>
+
+        }
+    </tbody>
+</table>

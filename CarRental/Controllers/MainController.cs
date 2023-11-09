@@ -78,13 +78,9 @@ namespace CarRental.Controllers
         }
         public async Task<IActionResult> ThueXe(string id)
 		{
-			string tenkhach = Request.Cookies["tenkhach"];
-			ViewBag.tenkhach = tenkhach;
-			if (tenkhach == null) //Chưa đăng nhập
-				return RedirectToAction("Index", "Logincus");
-			
-
-			if (id == null)
+            string tenkhach = Request.Cookies["tenkhach"];
+            ViewBag.tenkhach = tenkhach;
+            if (id == null)
 			{
 				return NotFound();
 			}
@@ -104,16 +100,13 @@ namespace CarRental.Controllers
 
         public IActionResult History()
         {
+
             string tenkhach = Request.Cookies["tenkhach"];
             ViewBag.tenkhach = tenkhach;
             var info = _context.DatXes.Where(a => a.TenKhach == tenkhach).ToList();
             var bienso = info.Select(a => a.BienSo).ToList();
-            
-
             List<string> dsbienso = new List<string>();
-            
             IList<Histroy> list = new List<Histroy>();
-
             foreach (string item in bienso)
             {
                 dsbienso.Add(item);
@@ -122,7 +115,13 @@ namespace CarRental.Controllers
             foreach (string item in dsbienso)
             {
                 var tenxe = _context.Xes.Where(a => a.BienSo == item).FirstOrDefaultAsync();
-                list.Add(new Histroy() { Ten = tenxe.Result.Ten, Gia =(int) tenxe.Result.Gia, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat , ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra});
+                DateTime ngay1 = (DateTime)info.FirstOrDefault(a => a.BienSo == item).NgayDat;
+                DateTime ngay2 = (DateTime)info.FirstOrDefault(a => a.BienSo == item).NgayTra;
+                int price = tenxe.Result.Gia;
+                TimeSpan distance = ngay2.Subtract(ngay1);
+                int day = ngay2.Subtract(ngay1).Days;
+                int total = price * day;
+                list.Add(new Histroy() { Ten = tenxe.Result.Ten, Gia = total, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat, ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra});
 
             }
             

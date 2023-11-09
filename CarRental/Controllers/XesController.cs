@@ -93,8 +93,19 @@ namespace CarRental.Controllers
         {
             if (ModelState.IsValid)
             {
+                string uniquefilename = UploadFile(xe);
+                var data = new Xe()
+                {
+                    Ten = xe.Ten,
+                    BienSo = xe.BienSo,
+                    TenLoai = xe.TenLoai,
+                    MoTa = xe.MoTa,
+                    Gia = xe.Gia,
+                    TrangThai = xe.TrangThai,
+                    Hinh = uniquefilename,
+                };
 
-                string wwwRootPath = webHostEnvironment.WebRootPath;
+                /*string wwwRootPath = webHostEnvironment.WebRootPath;
                 string filename = Path.GetFileNameWithoutExtension(xe.ImageFile.FileName);
                 string extension = Path.GetExtension(xe.ImageFile.FileName);
                 xe.Hinh = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
@@ -102,8 +113,8 @@ namespace CarRental.Controllers
                 using (var fileStream = new FileStream(path , FileMode.Create))
                 {
                     await xe.ImageFile.CopyToAsync(fileStream);
-                }
-                _context.Add(xe);
+                }*/
+                _context.Add(data);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -111,36 +122,37 @@ namespace CarRental.Controllers
             return View(xe);
         }
 
-        /*private string UploadFile(Xe xe)
+        public string UploadFile(Xe xe)
         {
-            string uniqueFileName = null;
-            if (xe.Hinh != null)
+            string uniqueFileName = string.Empty;
+            if (xe.ImageFile != null)
             {
-                string uploaddir = Path.Combine(webHostEnvironment.WebRootPath, "Images");
-                uniqueFileName = Guid.NewGuid().ToString() + "-" + xe.Hinh.FileName;
+                string uploaddir = Path.Combine(webHostEnvironment.WebRootPath, "Image");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + xe.ImageFile.FileName;
                 string filePath = Path.Combine(uploaddir, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    xe.Hinh.CopyTo(fileStream);
+                    xe.ImageFile.CopyTo(fileStream);
                 }
             }
             return uniqueFileName;
-        }*/
+        }
         // GET: Xes/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null)
+            var xe = _context.Xes.Where(a => a.Id == id).SingleOrDefault();
+            if (xe != null)
             {
-                return NotFound();
+                ViewData["TenLoai"] = new SelectList(_context.Loaixes, "TenLoai", "TenLoai", xe.TenLoai);
+                return View(xe);
             }
-
-            var xe = await _context.Xes.FindAsync(id);
-            if (xe == null)
-            {
-                return NotFound();
-            }
-            ViewData["TenLoai"] = new SelectList(_context.Loaixes, "TenLoai", "TenLoai", xe.TenLoai);
-            return View(xe);
+            return RedirectToAction("Index");
+            //var xe = await _context.Xes.FindAsync(id);
+            //if (xe == null)
+            //{
+            //    return NotFound();
+            //}
+            
         }
 
         // POST: Xes/Edit/5
@@ -148,19 +160,40 @@ namespace CarRental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Ten,TenLoai,MoTa,Gia,TrangThai,Hinh")] Xe xe)
+        public IActionResult Edit(int? id, Xe xe)
         {
-            if (id != xe.BienSo)
-            {
-                return NotFound();
-            }
-
+            
             if (ModelState.IsValid)
             {
                 try
                 {
-                    
-                    string wwwRootPath = webHostEnvironment.WebRootPath;
+                    var data = _context.Xes.Where(a => a.Id == xe.Id).SingleOrDefault();
+                    string uniquename = string.Empty;
+                    if (xe.ImageFile != null)
+                    {
+                        if (data.Hinh != null)
+                        {
+                            string filepath = Path.Combine(webHostEnvironment.WebRootPath, "Image", data.Hinh);
+                            if (System.IO.File.Exists(filepath))
+                            {
+                                System.IO.File.Delete(filepath);
+                            }
+                        }
+                        uniquename = UploadFile(xe);
+                    }
+                    data.Gia = xe.Gia;
+                    data.Ten = xe.Ten;
+                    data.TenLoai = xe.TenLoai;
+                    data.MoTa = xe.MoTa;
+                    data.TrangThai = xe.TrangThai;
+                    if (xe.ImageFile != null)
+                    {
+                        data.Hinh = uniquename;
+                    }
+                    //_context.Xes.Update(data);
+                    _context.SaveChanges();
+
+                    /*string wwwRootPath = webHostEnvironment.WebRootPath;
                     string filename = Path.GetFileNameWithoutExtension(xe.ImageFile.FileName);
                     string extension = Path.GetExtension(xe.ImageFile.FileName);
                     xe.Hinh = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
@@ -170,22 +203,15 @@ namespace CarRental.Controllers
                         await xe.ImageFile.CopyToAsync(fileStream);
                     }
                     _context.Update(xe);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();*/
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-                    if (!XeExists(xe.BienSo))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError(string.Empty, ex.Message);
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TenLoai"] = new SelectList(_context.Loaixes, "TenLoai", "TenLoai", xe.TenLoai);
+            ViewData["TenLoai"] = new SelectList(_context.Loaixes, "TenLoai", xe.TenLoai);
             return View(xe);
         }
 

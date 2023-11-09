@@ -1,14 +1,14 @@
 ﻿@model CarRental.Models.Customer
+
 @{
     Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Design by foolishdeveloper.com -->
-    <title>Login Customer</title>
+    <title>Quên mật khẩu</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -56,7 +56,7 @@
         }
 
         form {
-            height: 620px;
+            height: 480px;
             width: 450px;
             background-color: rgba(255,255,255,0.13);
             position: absolute;
@@ -153,45 +153,18 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="post" asp-action="Index" asp-controller="LoginCus">
-        <h3>Login Customer</h3>
-        <strong style="text-align:center;">@ViewBag.Thongbao</strong>
+    <form method="post" asp-action="FindEmail" asp-controller="LoginCus">
+        <h3>Vui lòng nhập tên đăng nhập của bạn</h3>
+        <strong style="text-align:center; margin-left:10px;">@ViewBag.Error</strong>
 
         <label for="username">Username</label>
         <input type="text" asp-for="TenKhach" placeholder="Username" id="username">
-
-        <label for="password">Password</label>
-        <input type="password" asp-for="Pass" placeholder="Password" id="password">
-
-        <div style="position:absolute; right:35px; margin-top:10px;">
-            <style>
-                a:link {
-                    text-decoration: none;
-                }
-
-                a:visited {
-                    text-decoration: none;
-                }
-
-                a:hover {
-                    text-decoration: underline;
-                }
-
-                a:active {
-                    text-decoration: underline;
-                }
-            </style>
-            <a asp-controller="LoginCus" asp-action="FindEmail">Quên mật khẩu</a>
-        </div>
-        <button type="submit">Log In</button>
-
+        <br />
+        <p>@ViewBag.Email</p>
         <div>
-            <button type="button" onclick="window.location.href = '@Url.Action("Register", "LoginCus")'">Sign in</button>
+            <button type="submit" onclick="window.location.href = '@Url.Action("FindEmail", "LoginCus")'">Xác nhận</button>
         </div>
 
-        <div style="position:absolute; right:35px; margin-top:10px;">
-            Đăng nhập cho <a asp-controller="LoginCus" asp-action="LoginAdmin">admin</a>
-        </div>
 
     </form>
 
