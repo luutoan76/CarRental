@@ -10,6 +10,8 @@ using System.Web;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Runtime.ConstrainedExecution;
+using X.PagedList;
 
 namespace CarRental.Controllers
 {
@@ -27,14 +29,14 @@ namespace CarRental.Controllers
         }
 
         // GET: Xes
-        public async Task<IActionResult> Index( string searchString, int? to, int? from)
+        public async Task<IActionResult> Index(string searchString, int? to, int? from)
         {
             var carRentContext = from m in _context.Xes select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                if(to !=null && from !=null)
+                if (to != null && from != null)
                 {
-                    carRentContext = carRentContext.Where(s => s.Ten!.Contains(searchString) && s.Gia>=to && s.Gia<=from);
+                    carRentContext = carRentContext.Where(s => s.Ten!.Contains(searchString) && s.Gia >= to && s.Gia <= from);
                 }
                 else
                 {

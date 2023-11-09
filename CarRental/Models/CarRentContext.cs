@@ -17,6 +17,8 @@ namespace CarRental.Models
         {
         }
 
+        public virtual DbSet<Car> Cars { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<DatXe> DatXes { get; set; }
         public virtual DbSet<Loaixe> Loaixes { get; set; }
@@ -29,7 +31,7 @@ namespace CarRental.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=MSI;initial catalog=CarRent; trusted_connection=yes;");
+                optionsBuilder.UseSqlServer("Data Source=.;initial catalog=CarRent; trusted_connection=yes;");
             }
         }
 
@@ -37,10 +39,44 @@ namespace CarRental.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
+            modelBuilder.Entity<Car>(entity =>
+            {
+                entity.HasIndex(e => e.CategoryId, "IX_Cars_CategoryID");
+
+                entity.Property(e => e.CarId).HasColumnName("CarID");
+
+                entity.Property(e => e.BienSo).IsRequired();
+
+                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+
+                entity.Property(e => e.CategoryName).IsRequired();
+
+                entity.Property(e => e.ImagePath).IsRequired();
+
+                entity.Property(e => e.LoaiXe).IsRequired();
+
+                entity.Property(e => e.MoTa).IsRequired();
+
+                entity.Property(e => e.PhanKhoi).IsRequired();
+
+                entity.Property(e => e.TenXe).IsRequired();
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Cars)
+                    .HasForeignKey(d => d.CategoryId);
+            });
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+
+                entity.Property(e => e.CategoryName).IsRequired();
+            });
+
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.TenKhach)
-                    .HasName("PK__Customer__BF09D2136148D0A4");
+                    .HasName("PK__Customer__BF09D213DFB08449");
 
                 entity.ToTable("Customer");
 
@@ -72,27 +108,23 @@ namespace CarRental.Models
 
                 entity.Property(e => e.NgayTra).HasColumnType("date");
 
-                entity.Property(e => e.Sdt)
-                    .HasMaxLength(11)
-                    .HasColumnName("SDT");
-
                 entity.Property(e => e.TenKhach).HasMaxLength(100);
 
                 entity.HasOne(d => d.BienSoNavigation)
                     .WithMany(p => p.DatXes)
                     .HasForeignKey(d => d.BienSo)
-                    .HasConstraintName("FK__DatXe__BienSo__2E1BDC42");
+                    .HasConstraintName("FK__DatXe__BienSo__34C8D9D1");
 
                 entity.HasOne(d => d.TenKhachNavigation)
                     .WithMany(p => p.DatXes)
                     .HasForeignKey(d => d.TenKhach)
-                    .HasConstraintName("FK__DatXe__TenKhach__2D27B809");
+                    .HasConstraintName("FK__DatXe__TenKhach__33D4B598");
             });
 
             modelBuilder.Entity<Loaixe>(entity =>
             {
                 entity.HasKey(e => e.TenLoai)
-                    .HasName("PK__Loaixe__E29B1043DBC2B59F");
+                    .HasName("PK__Loaixe__E29B104367FC9F78");
 
                 entity.ToTable("Loaixe");
 
@@ -124,7 +156,7 @@ namespace CarRental.Models
             modelBuilder.Entity<ThanhToan>(entity =>
             {
                 entity.HasKey(e => e.IdBill)
-                    .HasName("PK__ThanhToa__24A2D64D4BB2E98F");
+                    .HasName("PK__ThanhToa__24A2D64DECB5DFFB");
 
                 entity.ToTable("ThanhToan");
 
@@ -137,23 +169,23 @@ namespace CarRental.Models
                 entity.HasOne(d => d.BienSoNavigation)
                     .WithMany(p => p.ThanhToans)
                     .HasForeignKey(d => d.BienSo)
-                    .HasConstraintName("FK__ThanhToan__BienS__32E0915F");
+                    .HasConstraintName("FK__ThanhToan__BienS__398D8EEE");
 
                 entity.HasOne(d => d.IdNavigation)
                     .WithMany(p => p.ThanhToans)
                     .HasForeignKey(d => d.Id)
-                    .HasConstraintName("FK__ThanhToan__Id__31EC6D26");
+                    .HasConstraintName("FK__ThanhToan__Id__38996AB5");
 
                 entity.HasOne(d => d.TenKhachNavigation)
                     .WithMany(p => p.ThanhToans)
                     .HasForeignKey(d => d.TenKhach)
-                    .HasConstraintName("FK__ThanhToan__TenKh__30F848ED");
+                    .HasConstraintName("FK__ThanhToan__TenKh__37A5467C");
             });
 
             modelBuilder.Entity<Xe>(entity =>
             {
                 entity.HasKey(e => e.BienSo)
-                    .HasName("PK__Xe__F7052EB7378E43AC");
+                    .HasName("PK__Xe__F7052EB7C84EC019");
 
                 entity.ToTable("Xe");
 
@@ -170,7 +202,7 @@ namespace CarRental.Models
                 entity.HasOne(d => d.TenLoaiNavigation)
                     .WithMany(p => p.Xes)
                     .HasForeignKey(d => d.TenLoai)
-                    .HasConstraintName("FK__Xe__TenLoai__267ABA7A");
+                    .HasConstraintName("FK__Xe__TenLoai__2D27B809");
             });
 
             OnModelCreatingPartial(modelBuilder);

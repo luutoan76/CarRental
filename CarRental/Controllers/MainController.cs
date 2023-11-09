@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace CarRental.Controllers
 {
@@ -23,20 +24,40 @@ namespace CarRental.Controllers
             _context = context;
             webHostEnvironment = hostEnvironment;
         }
-        public async Task<IActionResult> Index(string searchString, int? to, int? from)
+        public async Task<IActionResult> Index(string searchString, int? to, int? from, int? pageNumber)
         {
             string tenkhach = Request.Cookies["tenkhach"];
             ViewBag.tenkhach = tenkhach;
+            //var pageNumber = page ?? 1;
             var car = from m in _context.Xes select m;
-            //var car = _context.Xes.ToList();
-            
-            //var car = from m in _context.Xes select m;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 car = car.Where(s => s.Ten!.Contains(searchString));
             }
-            return View(car);
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            int pageSize =6;
+            return View(await PaginatedList<Xe>.CreateAsync(car.AsNoTracking(), pageNumber ?? 1, pageSize));
+
+            //if (page == null)
+            //{
+            //    page = 1;
+            //}
+            //if (pageSize == null)
+            //{
+            //    pageSize = 10;
+            //}
+            //ViewBag.PageSize = pageSize;
+            //var cars= _context.Xes.ToList();
+            //ViewBag.Xes = _context.Xes.ToList().ToPagedList(pageNumber, 1);
+            //var pagedList = await car.ToPagedListAsync(page, pageSize);
+            //return View();
+            //return View(pagedList);
         }
+
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)

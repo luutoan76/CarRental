@@ -1,4 +1,10 @@
-﻿@model IEnumerable<CarRental.Models.Xe>
+﻿@*@model X.PagedList.IPagedList<CarRental.Models.Xe>*@
+    @using PagedList.Mvc;
+    @using PagedList;
+    @using X.PagedList;
+    @using X.PagedList.Mvc.Core;
+@*@model X.PagedList.IPagedList<CarRental.Models.Xe>*@
+@model PaginatedList<CarRental.Models.Xe>
 
 @{
     Layout = null;
@@ -252,6 +258,9 @@
 
     </section>
             <div class="row">
+            @if(Model != null && Model.Any()){
+                    var i = 1;
+                }
                 @foreach (var item in Model)
                 {
                     <div class="col-md-4 mb-4">
@@ -270,7 +279,42 @@
                 }
             </div>
         </div>
+        <br />
+      @*  @Html.PageListPager(Model, page => Url.Action("Index",
+        new {page,pageSize = ViewBag.PageSize}))*@
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
 
+       @* <div class="container text-center">
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-default @prevDisabled text-white mx-auto">
+                Trang trước
+            </a>
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-default @nextDisabled text-white mx-auto">
+                Trang sau
+            </a>
+        </div>*@
+        <div class="container text-center">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@i"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-default text-white mx-1 @(i == Model.PageIndex ? "disabled" : "")">
+                    @i
+                </a>
+            }
+        </div>
 
 
         <div class="container">
