@@ -21,7 +21,7 @@ namespace CarRental.Models
         public string Ten { get; set; }
         public string TenLoai { get; set; }
         public string MoTa { get; set; }
-        public int? Gia { get; set; }
+        public int Gia { get; set; }
         public string TrangThai { get; set; }
         public string Hinh { get; set; }
         [NotMapped]

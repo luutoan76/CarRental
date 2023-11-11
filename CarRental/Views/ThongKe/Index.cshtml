@@ -1,8 +1,14 @@
 ﻿@model IEnumerable<CarRental.Models.ThanhToan>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+}<form asp-controller="ThongKe" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
 <table class="table table-striped">
     <thead>
@@ -31,3 +37,8 @@
         }
     </tbody>
 </table>
+<tr>
+    <td colspan="5" class="margin-class"><strong>Tổng doanh thu:</strong></td>
+    <td class="text-right">@Model.Sum(x => x.Total) vnđ</td>
+<tr>
+
