@@ -3,42 +3,52 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}<form asp-controller="ThongKe" asp-action="Index">
-    <p>
-        Title: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
+}
+
+<form method="post" asp-action="Index" asp-controller="ThongKe">
+    <label for="startDate">Ngày bắt đầu:</label>
+    <input type="datetime" id="startDate" name="startDate" required>
+    <label for="endDate">Ngày kết thúc:</label>
+    <input type="datetime" id="endDate" name="endDate" required>
+    <button type="submit" class="btn-primary">Tìm kiếm</button>
 </form>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Tên khách</th>
-            <th>Id</th>
-            <th>Biển số</th>
-            <th>Phí trễ</th>
-            <th>Ngày in</th>
-            <th>Tổng cộng</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@item.TenKhach</td>
-                <td>@item.Id</td>
-                <td>@item.BienSo</td>
-                <td>@item.PhiTre</td>
-                <td>@item.NgayIn</td>
-                <td>@item.Total</td>
-            </tr>
+                <th>Tên khách</th>
+                <th>Id</th>
+                <th>Biển số</th>
+                <th>Phí trễ</th>
+                <th>Ngày in</th>
+                <th>Tổng cộng</th>
 
-        }
-    </tbody>
-</table>
-<tr>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TenKhach</td>
+                    <td>@item.Id</td>
+                    <td>@item.BienSo</td>
+                    <td>@item.PhiTre</td>
+                    <td>@item.NgayIn</td>
+                    <td>@item.Total vnđ</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <tr>
     <td colspan="5" class="margin-class"><strong>Tổng doanh thu:</strong></td>
     <td class="text-right">@Model.Sum(x => x.Total) vnđ</td>
-<tr>
+    </tr>
+}
+else
+{
+    <p>Không tìm thấy kết quả.</p>
+}
+
 

@@ -20,15 +20,37 @@ namespace CarRental.Controllers
 
 			_context = context;
 		}
-        // GET: Customers
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index(DateTime? ngayIn)
+        //{
+        //    if (ngayIn != null)
+        //    {
+        //        var thanhToans = await _context.ThanhToans.Where(t => t.NgayIn == ngayIn).ToListAsync();
+        //        return View(thanhToans);
+        //    }
+        //    else
+        //    {
+        //        return View(await _context.ThanhToans.ToListAsync());
+        //    }
+        //}
+        public async Task<IActionResult> Index(DateTime? startDate, DateTime? endDate)
         {
+            // Check if both start and end dates are provided
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                // Retrieve records within the specified date range
+                var thanhToans = await _context.ThanhToans
+                    .Where(t => t.NgayIn >= startDate && t.NgayIn <= endDate)
+                    .ToListAsync();
+
+                return View(thanhToans);
+            }
+
+            // Retrieve all records if no date range is specified
+            var thanhtoans = await _context.ThanhToans.ToListAsync();
+
+            return View(thanhtoans);
+        }
 
 
-            return View(await _context.ThanhToans.ToListAsync());
-
-		}
-
-
-	}
+    }
 }

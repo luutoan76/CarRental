@@ -23,5 +23,6 @@ namespace CarRental.Controllers
         {
             return View(await _context.DatXes.ToListAsync());
         }
+
     }
 }

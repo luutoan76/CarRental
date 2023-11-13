@@ -33,7 +33,21 @@ namespace CarRental.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                car = car.Where(s => s.Ten!.Contains(searchString));
+                if (to != null && from != null)
+                {
+                    car = car.Where(s => s.Ten!.Contains(searchString) && s.Gia >= to && s.Gia <= from);
+                }
+                else
+                {
+                    car = car.Where(s => s.Ten!.Contains(searchString));
+                }
+            }
+            else
+            {
+                if (to != null && from != null)
+                {
+                    car = car.Where(s => s.Ten!.Contains(searchString) && s.Gia >= to && s.Gia <= from);
+                }
             }
             if (searchString != null)
             {
