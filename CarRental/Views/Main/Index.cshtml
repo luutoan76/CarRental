@@ -261,21 +261,30 @@
             @if(Model != null && Model.Any()){
                     var i = 1;
                 }
-                @foreach (var item in Model)
+                @if (Model.Any())
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img width="200" height="230" src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">@item.Ten</h5>
-                                <p class="card-text"><strong>Giá thuê:</strong> @item.Gia$</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>
-                                <a href="@Url.Action("ThueXe", new { id = item.BienSo })" class="btn btn-success btn-block">Thuê</a>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img width="200" height="230" src="@("~/Image/" + item.Hinh)" asp-append-version="true" class="card-img-top" alt="Image">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">@item.Ten</h5>
+                                    <p class="card-text"><strong>Giá thuê:</strong> @item.Gia$</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="@Url.Action("Details", new { id = item.BienSo })" class="btn btn-primary btn-block">Chi Tiết</a>
+                                    <a href="@Url.Action("ThueXe", new { id = item.BienSo })" class="btn btn-success btn-block">Thuê</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                }
+                else
+                {
+                    <div class="container-fluid footer_section">
+                        <p>Không tìm thấy kết quả.</p>
+                    </div>                 
                 }
             </div>
         </div>
