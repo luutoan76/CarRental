@@ -24,6 +24,8 @@ namespace CarRental.Controllers
             ViewBag.CoutLoaiXe = dbContext.Loaixes.Count();
             ViewBag.CoutNhanVien = dbContext.NhanViens.Count();
             ViewBag.CoutCustomer = dbContext.Customers.Count();
+            ViewBag.CoutBill = dbContext.DatXes.Count();
+            ViewBag.CoutThongKe = dbContext.ThanhToans.Count();
 
             return View();
         }

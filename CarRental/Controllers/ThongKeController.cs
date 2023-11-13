@@ -34,6 +34,7 @@ namespace CarRental.Controllers
         //}
         public async Task<IActionResult> Index(DateTime? startDate, DateTime? endDate)
         {
+
             // Check if both start and end dates are provided
             if (startDate.HasValue && endDate.HasValue)
             {

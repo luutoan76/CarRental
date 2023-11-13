@@ -219,13 +219,13 @@
             <section class="book_section">
 
                 <div class="form_container">
-                    <form asp-controller="Main" asp-action="Index">
+                    <form method="post" asp-action="Index" asp-controller="Main">
                         <div class="form-row">
                             <div class="col-lg-7">
                                 <div class="form-row">
                                     <div class="col-md-10">
                                         <label for="parkingName">Tìm kiếm xe</label>
-                                        <input type="text" name="SearchString" class="form-control" placeholder="Nhập tên xe cần tìm...">
+                                        <input type="text" name="SearchString" class="form-control" placeholder="Nhập tên xe cần tìm..." required>
                                     </div>
                                 </div>
                             </div>
