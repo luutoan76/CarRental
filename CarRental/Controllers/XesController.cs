@@ -11,7 +11,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Runtime.ConstrainedExecution;
-using X.PagedList;
+//using X.PagedList;
 
 namespace CarRental.Controllers
 {

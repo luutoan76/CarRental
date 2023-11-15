@@ -1,8 +1,8 @@
 ﻿@*@model X.PagedList.IPagedList<CarRental.Models.Xe>*@
     @using PagedList.Mvc;
     @using PagedList;
-    @using X.PagedList;
-    @using X.PagedList.Mvc.Core;
+    @*@using X.PagedList;
+    @using X.PagedList.Mvc.Core;*@
 @*@model X.PagedList.IPagedList<CarRental.Models.Xe>*@
 @model PaginatedList<CarRental.Models.Xe>
 
@@ -55,9 +55,9 @@
 
                     <div class="navbar-collapse" id="">
                         <div class="user_option" >
-                            <div style="color:white; position:absolute; left:1080px; font-size:17px;">Xin chào:
+                            <div style="color:white; position:absolute; left:870px; font-size:17px;">Xin chào:
                             <a asp-controller="LoginCus" asp-action="Profile">@ViewBag.tenkhach</a> </div>
-                            <a asp-controller="LoginCus" asp-action="Index" style="margin-right:20px;">
+                            <a asp-controller="LoginCus" asp-action="Index">
                                 Log in
                             </a>
                            
@@ -256,9 +256,17 @@
                     </form>
                 </div>
 
-    </section>
+            </section>
+            @if (TempData["ThonBao"] != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>@TempData["ThonBao"]</strong>
+                </div>
+            }
             <div class="row">
-            @if(Model != null && Model.Any()){
+
+                @if (Model != null && Model.Any())
+                {
                     var i = 1;
                 }
                 @if (Model.Any())
@@ -284,7 +292,7 @@
                 {
                     <div class="container-fluid footer_section">
                         <p>Không tìm thấy kết quả.</p>
-                    </div>                 
+                    </div>
                 }
             </div>
         </div>

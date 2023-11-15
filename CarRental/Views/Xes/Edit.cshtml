@@ -61,7 +61,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="TrangThai" class="control-label"></label>
-                <input asp-for="TrangThai" class="form-control" />
+                <select class="custom-select" id="inputGroupSelect01" required asp-for="TrangThai">
+                    <option selected>Choose...</option>
+                    <option value="Đang thuê">Đang thuê</option>
+                    <option value="Còn trống">Còn trống</option>
+                </select>
                 <span asp-validation-for="TrangThai" class="text-danger"></span>
             </div>
             <div class="form-group">

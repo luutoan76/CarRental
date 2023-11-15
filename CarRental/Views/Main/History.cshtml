@@ -52,10 +52,12 @@
                                         <th class="product-price">Giá tiền</th>
                                         <th class="product-quantity">Ngày đặt</th>
                                         <th class="product-total">Ngày trả</th>
+                                        <th class="product-total">Trạng thái</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in ViewData["list"] as IList<Histroy>)
+                                    @foreach (var item in ViewData["list"] as IList<History>)
                                     {
 
                                     <tr>
@@ -74,6 +76,9 @@
                                         </td>
                                         <td>
                                             @item.ngaytra
+                                        </td>
+                                        <td>
+                                            @item.TrangThai
                                         </td>
                                     </tr>
                                     }

@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using X.PagedList;
+//using X.PagedList;
 
 namespace CarRental.Controllers
 {
@@ -65,7 +65,7 @@ namespace CarRental.Controllers
             //    pageSize = 10;
             //}
             //ViewBag.PageSize = pageSize;
-            //var cars= _context.Xes.ToList();
+            //var cars = _context.Xes.ToList();
             //ViewBag.Xes = _context.Xes.ToList().ToPagedList(pageNumber, 1);
             //var pagedList = await car.ToPagedListAsync(page, pageSize);
             //return View();
@@ -102,6 +102,12 @@ namespace CarRental.Controllers
             var xe = await _context.Xes
                 .Include(x => x.TenLoaiNavigation)
                 .FirstOrDefaultAsync(m => m.BienSo == id);
+            string trangthai;
+            if (xe.TrangThai.ToString() == "Đang thuê")
+            {
+                TempData["ThonBao"] = "Xe đã được thuê vui lòng chọn xe khác";
+                return RedirectToAction("Index");
+            }
              ViewBag.Xe = xe;
             if (xe == null)
             {
@@ -120,7 +126,7 @@ namespace CarRental.Controllers
             var info = _context.DatXes.Where(a => a.TenKhach == tenkhach).ToList();
             var bienso = info.Select(a => a.BienSo).ToList();
             List<string> dsbienso = new List<string>();
-            IList<Histroy> list = new List<Histroy>();
+            IList<History> list = new List<History>();
             foreach (string item in bienso)
             {
                 dsbienso.Add(item);
@@ -135,7 +141,16 @@ namespace CarRental.Controllers
                 TimeSpan distance = ngay2.Subtract(ngay1);
                 int day = ngay2.Subtract(ngay1).Days;
                 int total = price * day;
-                list.Add(new Histroy() { Ten = tenxe.Result.Ten, Gia = total, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat, ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra});
+                string trangthai;
+                if (ngay2.Day < DateTime.Now.Day)
+                {
+                    trangthai = "Đã trả";
+                }
+                else
+                {
+                    trangthai = "Đang thuê";
+                }
+                list.Add(new History() { Ten = tenxe.Result.Ten, Gia = total, Hinh = tenxe.Result.Hinh , ngaydat = info.FirstOrDefault(a => a.BienSo == item).NgayDat, ngaytra = info.FirstOrDefault(a => a.BienSo == item).NgayTra , TrangThai = trangthai});
 
             }
             
