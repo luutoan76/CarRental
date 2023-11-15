@@ -105,15 +105,7 @@ namespace CarRental.Controllers
                     Hinh = uniquefilename,
                 };
 
-                /*string wwwRootPath = webHostEnvironment.WebRootPath;
-                string filename = Path.GetFileNameWithoutExtension(xe.ImageFile.FileName);
-                string extension = Path.GetExtension(xe.ImageFile.FileName);
-                xe.Hinh = filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/Image", filename);
-                using (var fileStream = new FileStream(path , FileMode.Create))
-                {
-                    await xe.ImageFile.CopyToAsync(fileStream);
-                }*/
+                
                 _context.Add(data);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
