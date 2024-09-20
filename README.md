@@ -20,7 +20,7 @@ The Car Rental Project is a web application designed to manage car rentals and b
 - Admin can view sales statistics.
 
 ## 🛠️ Installation  
-### Prerequisites  
+### Required  
 - Visual Studio (or any compatible IDE)  
 - SQL Server  
 - .NET Core SDK  
