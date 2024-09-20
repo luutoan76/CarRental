@@ -1,24 +1,25 @@
-# Car Rental Project by [Your Name]
-
-▶️ A simple and powerful car rental application.  
-▶️ Featuring various functionalities for users and administrators.  
-▶️ Currently in development; you may encounter minor bugs.
+# Car Rental Project
 
 ## 📋 Overview  
-The basic or default prefix for commands is "/". You can customize the application settings in the configuration file.
+The Car Rental Project is a web application designed to manage car rentals and bookings. It allows users to register, log in (with Google Sign-in option), book cars, and manage their rental history. The project includes backend functionalities for car management and booking processing, with email notifications for password recovery.
 
-## ✨ Features
-- **User Commands:** 🚗 Rent cars easily with a few clicks. Browse available vehicles, view details, and make bookings seamlessly.
-  
-- **Admin Commands:** 👮‍♂️ Manage your rental business efficiently. Add, update, or remove cars from the inventory, and oversee user bookings.
-  
-- **Payment Integration:** 💳 Securely process payments with integrated payment gateways, ensuring a smooth transaction experience.
-  
-- **Search & Filter:** 🔍 Find the perfect car with powerful search and filtering options. Customize your search based on price, type, and availability.
-  
-- **User Profile Management:** 👤 Keep track of your bookings and manage your personal information easily.
+## 🛠️ Technologies Used  
+- **Backend:** ASP.NET Core MVC, Entity Framework
+- **Frontend:** HTML, CSS, Bootstrap
+- **Database:** SQL Server
+- **Authentication:** Google Sign-in, JWT (for login)
+- **API Documentation:** Swagger
+- **Version Control:** Git, GitHub
 
-🛠️ **Installation**  
-1. **Clone the Repository:**  
-   ```bash
-   git clone https://github.com/yourusername/carrental.git
+## ✨ Features  
+- **User Authentication:** Supports login, registration, and Google Sign-in for user accounts.
+- **Car Rental Management:** Users can browse available cars, book rentals, and manage their rental bookings.
+- **Booking System:** Allows users to book a car for specific dates and manage their reservations.
+- **Password Recovery:** Users can request password reset via email.
+- **Responsive UI:** The UI is designed using Bootstrap for a responsive and user-friendly experience.
+
+## 🛠️ Installation  
+### Prerequisites  
+- Visual Studio (or any compatible IDE)  
+- SQL Server  
+- .NET Core SDK  
