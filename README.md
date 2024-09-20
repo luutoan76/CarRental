@@ -9,8 +9,10 @@ Database: SQL Server
 Authentication: Google API (for login)
 Version Control: GitHub
 Features
-User Authentication: Supports login, registration, and Google Sign-in for user accounts.
-Car Rental Management: Users can browse available cars, book rentals, and manage their rental bookings.
-Booking System: Allows users to book a car for specific dates and manage their reservations.
-Password Recovery: Users can request password reset via email.
-Responsive UI: The UI is designed using Bootstrap for a responsive and user-friendly experience.
+- Supports login, registration, and Google Sign-in for user accounts.
+- Users can browse available cars, book rentals, view booking history and manage their rental bookings.
+- Allows users to book a car for specific dates and manage their reservations.
+- Users can request password reset via email.
+- The UI is designed using Bootstrap for a responsive and user-friendly experience.
+- Provide Admin account for car management, order car, customer booking.
+- Admin can view car rental statistics.
