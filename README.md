@@ -7,7 +7,7 @@
 ## 📋 Overview  
 The basic or default prefix for commands is "/". You can customize the application settings in the configuration file.
 
-✨ **Features**  
+## ✨ Features
 - **User Commands:** 🚗 Rent cars easily with a few clicks. Browse available vehicles, view details, and make bookings seamlessly.
   
 - **Admin Commands:** 👮‍♂️ Manage your rental business efficiently. Add, update, or remove cars from the inventory, and oversee user bookings.
