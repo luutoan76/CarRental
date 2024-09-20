@@ -7,16 +7,17 @@ The Car Rental Project is a web application designed to manage car rentals and b
 - **Backend:** ASP.NET Core MVC, Entity Framework
 - **Frontend:** HTML, CSS, Bootstrap
 - **Database:** SQL Server
-- **Authentication:** Google Sign-in, JWT (for login)
-- **API Documentation:** Swagger
-- **Version Control:** Git, GitHub
+- **Authentication:** Google API
+- **Version Control:** GitHub
 
 ## ✨ Features  
-- **User Authentication:** Supports login, registration, and Google Sign-in for user accounts.
-- **Car Rental Management:** Users can browse available cars, book rentals, and manage their rental bookings.
-- **Booking System:** Allows users to book a car for specific dates and manage their reservations.
-- **Password Recovery:** Users can request password reset via email.
-- **Responsive UI:** The UI is designed using Bootstrap for a responsive and user-friendly experience.
+- Supports login, registration, and Google Sign-in for user accounts.
+- Users can browse available cars, booking history and rent a car.
+- Allows users to book a car for specific dates and manage their reservations.
+- Users can request password reset via email.
+- The UI is designed using Bootstrap for a responsive and user-friendly experience.
+- Admin account for car management, user management, booking management.
+- Admin can view sales statistics.
 
 ## 🛠️ Installation  
 ### Prerequisites  
