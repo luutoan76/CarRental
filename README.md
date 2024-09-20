@@ -1,18 +1,24 @@
-Car Rental Project
-Overview
-The Car Rental Project is a web application designed to manage car rentals and bookings. It allows users to register, log in (with Google Sign-in option), book cars, and manage their rental history. The project includes backend functionalities for car management and booking processing, with email notifications for password recovery.
+# Car Rental Project 
 
-Technologies Used
-Backend: ASP.NET Core MVC, Entity Framework
-Frontend: HTML, CSS, Bootstrap
-Database: SQL Server
-Authentication: Google API (for login)
-Version Control: GitHub
-Features
-- Supports login, registration, and Google Sign-in for user accounts.
-- Users can browse available cars, book rentals, view booking history and manage their rental bookings.
-- Allows users to book a car for specific dates and manage their reservations.
-- Users can request password reset via email.
-- The UI is designed using Bootstrap for a responsive and user-friendly experience.
-- Provide Admin account for car management, order car, customer booking.
-- Admin can view car rental statistics.
+▶️ A simple and powerful car rental application.  
+▶️ Featuring various functionalities for users and administrators.  
+▶️ Currently in development; you may encounter minor bugs.
+
+📋 **Overview**  
+The basic or default prefix for commands is "/". You can customize the application settings in the configuration file.
+
+✨ **Features**  
+- **User Commands:** 🚗 Rent cars easily with a few clicks. Browse available vehicles, view details, and make bookings seamlessly.
+  
+- **Admin Commands:** 👮‍♂️ Manage your rental business efficiently. Add, update, or remove cars from the inventory, and oversee user bookings.
+  
+- **Payment Integration:** 💳 Securely process payments with integrated payment gateways, ensuring a smooth transaction experience.
+  
+- **Search & Filter:** 🔍 Find the perfect car with powerful search and filtering options. Customize your search based on price, type, and availability.
+  
+- **User Profile Management:** 👤 Keep track of your bookings and manage your personal information easily.
+
+🛠️ **Installation**  
+1. **Clone the Repository:**  
+   ```bash
+   git clone https://github.com/yourusername/carrental.git
